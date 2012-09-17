@@ -1,0 +1,50 @@
+paginate: 10
+title: rexmac.com
+description: "Rex McConnell's place on the world-wide-web, with tutorials, notes, and ramblings on computer programming, web development, and other topics"
+url: http://rexmac.com
+include: [".htaccess"]
+exclude: [
+  "CNAME",
+  "config.rb",
+  "Gemfile",
+  "Gemfile.lock",
+  "Guardfile",
+  "Rakefile",
+  "README.md",
+  "rexmac.com.sublime-project",
+  "rexmac.com.sublime-workspace",
+  "sass"
+]
+permalink: /blog/:title
+pygments: true
+
+markdown: rdiscount
+rdiscount:
+  extensions: [smart, footnotes]
+
+author:
+  name: Rex McConnell
+  github: rexmac
+  twitter: _rexmac
+
+jsmincat: [
+  "js/libs/sprintf.min.js",
+  "js/libs/bootstrap-transition.js",
+  "js/libs/bootstrap-collapse.js",
+  "js/libs/bootstrap-tooltip.js",
+  "js/libs/imageFlip.js",
+  "js/libs/jquery.cookie.js",
+  "js/libs/jquery.fcbkcomplete.js",
+  "js/libs/jquery.notifier.js",
+  "js/libs/jquery.showLoading.js",
+  "js/libs/jquery.validate.js",
+  "js/_rexmac.js"
+]
+
+analytics:
+  #provider: false
+  provider: google
+  google:
+    tracking_id: 'UA-XXXXX-X'
+
+rsync_params:

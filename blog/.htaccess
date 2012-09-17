@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /blog
+
+# Remove '/blog' from URI
+RewriteCond %{HTTP_HOST} ^blog\.rexmac\.com(:80)?$ [NC]
+RewriteCond %{THE_REQUEST} ^(?:.+\ )/blog [NC]
+RewriteRule ^(.*)$ /$1 [QSA,L,R=301]
+
+# Redirect rexmac.com/blog to blog.rexmac.com
+RewriteCond %{HTTP_HOST} ^rexmac\.com(:80)?$ [NC]
+RewriteCond %{REQUEST_URI} ^/blog [NC]
+RewriteRule ^(.*)$ http://blog.rexmac.com/$1 [QSA,L]
+</IfModule>

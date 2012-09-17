@@ -1,0 +1,9 @@
+.DS_STORE
+.pygments-cache
+.sass-cache
+_site
+_zfapp/library/Zend/
+_zfapp/logs
+*.sublime-*
+Gemfile.lock
+css
