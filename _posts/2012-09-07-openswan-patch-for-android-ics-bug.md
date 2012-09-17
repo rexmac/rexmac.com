@@ -12,7 +12,7 @@ tags:
 
 I recently [setup a private VPN using an Amazon EC2 instance]({% post_url 2012-09-07-internet-security-when-travelling %}). Unfortunately, while my Samsung Galaxy Nexus, which is running Android JellyBean, has no trouble connecting to the VPN, my wife's Samsung Galaxy S2, which is running Android ICS, refused to connect. The only error on the phone was "Timeout". Very helpful. Thankfully, the authentication log on the EC2 instance revealed much more:
 
-``` :noln /var/log/auth.log 
+``` :noln /var/log/auth.log
 Sep  7 14:38:22 localhost pluto[7325]: "L2TP-PSK-NAT"[32] xxx.xxx.xxx.xxx #30: sending notification PAYLOAD_MALFORMED to xxx.xxx.xxx.xxx:60138
 Sep  7 14:38:24 localhost pluto[7325]: "L2TP-PSK-NAT"[32] xxx.xxx.xxx.xxx #30: byte 7 of ISAKMP NAT-OA Payload must be zero, but is not
 Sep  7 14:38:24 localhost pluto[7325]: "L2TP-PSK-NAT"[32] xxx.xxx.xxx.xxx #30: malformed payload in packet
