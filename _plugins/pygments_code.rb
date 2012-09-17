@@ -43,7 +43,7 @@ module HighlightCode
       if(include_line_numbers)
         line_numbers += "<span class='line-number'>#{index+1}</span>\n"
       end
-      code  += "<span class='line'>#{line}</span>"
+      code  += "<span class='line'>#{line.rstrip()}</span>\n"
     end
     table = '<div class="highlight"><table><tr>'
     if(include_line_numbers)

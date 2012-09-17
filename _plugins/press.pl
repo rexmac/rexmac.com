@@ -23,7 +23,8 @@ while(<>) {
     #print "\nNO PRE\n";
     #print "\nLINE: '$_'\n\n";
     $_ =~ s/[\r\n]/ /g; # convert line endings into spaces
-    $_ =~ s/\s+/ /g;    # reduce serial whitespace to 1 character
+    # reduce serial whitespace to 1 character, unless contained within a <span class="line"> element
+    $_ =~ s/(?!<span class="line">)(.*)\s+(.*)(?!<\/span>)/$1 $2/g;
     $_ =~ s/>\s+</> </g; # strip whitespace between tags
     $_ =~ s/>\s+$/>/g;  # strip whitespace after tags
     $_ =~ s/^\s+</</g;  # strip whitespace before tags
