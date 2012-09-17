@@ -1,9 +1,13 @@
 # Sitemap.xml Generator is a Jekyll plugin that generates a sitemap.xml file by 
 # traversing all of the available posts and pages.
+#
 # pke: modified to use site.config['sitemap']['url'] instead of MY_URL
-# rexmac: modified to pull changefreq and priority from YAML Front Matter of
-#         layout before (possibly) overriding with values from YAML Front
-#         Matter of page/post
+#
+# rexmac:
+#   - modified to pull changefreq and priority from YAML Front Matter of
+#     layout before (possibly) overriding with values from YAML Front Matter
+#     of page/post
+#   - modified to use blog. subdomain for posts and blog index page
 #
 # How To Use: 
 #   1.) Copy source file into your _plugins folder within your Jekyll project.
@@ -67,7 +71,7 @@ module Jekyll
     end
 
     def location_on_server(my_url)
-      "#{my_url}#{url}"
+      "#{my_url}#{url}".gsub(/\/\/rexmac/, '//blog.rexmac').gsub(/\/blog\//, '/')
     end
   end
 
@@ -80,7 +84,11 @@ module Jekyll
 
     def location_on_server(my_url)
       location = "#{my_url}#{@dir}#{url}"
-      location.gsub(/index.html$/, "")
+      location.gsub!(/index\.html$/, "")
+      if location.match(/\/blog\//)
+        location.gsub!(/\/\/rexmac/, '//blog.rexmac').gsub!(/\/blog\//, '/')
+      end
+      location
     end
   end
 
