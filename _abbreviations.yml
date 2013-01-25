@@ -1,14 +1,17 @@
 ---
-API: Application programming interface
-CMS: Content management system
+a11y: Accessibility
+API: Application Programming Interface
+CMS: Content Management System
 CSS: Cascading Style Sheets
 HTML: HypeyText Markup Language
 ICS: Ice Cream Sandwhich (Goolge Android OS v4.0.x)
 JS: JavaScript
 PHP: "PHP: Hypertext Preprocessor"
-RDBMS: Relational database management system
+RDBMS: Relational DataBase Management System
 SQL: Structured Query Language
+UI: User Interface
+UX: User eXperience
 VPN: Virtual Private Network
 WP: WordPress
-WYSIWYG: What you see is (sometimes) what you get
-XML: Extensible Markup Language
+WYSIWYG: What You See Is (sometimes) What You Get
+XML: eXtensible Markup Language
