@@ -392,4 +392,17 @@ $(function() {
       //.fail(function(jqXhr, settings, exception){console.log('fail', exception)});
     }
   });
+
+  fayer.on('page-about-me', function() {
+    $('#skills-treemap').treemap({
+      color: ['#93c', '#f00'],
+      legend: {
+        labels: {
+          low: 'Weak',
+          high: 'Strong'
+        },
+        position: 'top'
+      }
+    });
+  });
 });

@@ -11,6 +11,7 @@ exclude: [
   "Guardfile",
   "Rakefile",
   "README.md",
+  "resolutionizr.html",
   "rexmac.com.sublime-project",
   "rexmac.com.sublime-workspace",
   "sass"
@@ -39,7 +40,9 @@ jsmincat: [
   "js/libs/jquery.fcbkcomplete.js",
   "js/libs/jquery.notifier.js",
   "js/libs/jquery.showLoading.js",
+  "js/libs/jquery.treemap.js",
   "js/libs/jquery.validate.js",
+  "js/libs/fayer.js",
   "js/_rexmac.js"
 ]
 
