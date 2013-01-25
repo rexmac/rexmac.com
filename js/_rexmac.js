@@ -20,7 +20,7 @@
   $.Rexmac.charMetrics = function(el) {
     var h=0, w=0,
     styles = ['border', 'font-size', 'font-style', 'font-weight', 'font-family', 'line-height', 'text-transform', 'letter-spacing', 'margin', 'padding'],
-    d = $('<pre style="display:none;padding:0;margin:0">0</div>').appendTo(document.body);
+    d = $('<pre style="display:none;padding:0;margin:0">0</pre>').appendTo(document.body);
     $(styles).each(function() {
       var s = this.toString();
       //console.log(s, el.css(s));
@@ -291,8 +291,16 @@ $(function() {
     }
   });
 
-  $('a[href="#"]').attr('href', window.location.href);
 
+  /**
+   * Get off my lawn, you damned self-referencing anchors!
+   */
+  //$('a[href="#"]').attr('href', window.location.href);
+
+
+  /**
+   * Dude, where are we?
+   */
   $('.navbar-inner').find('ul.nav').first().children().each(function() {
     var path = window.location.pathname;
     if(0 === window.location.host.toUpperCase().indexOf('BLOG.')) {
@@ -305,19 +313,25 @@ $(function() {
       $(this).addClass('active');
     }
   });
-
   //if($('.navbar-inner').find('ul.nav').first().children('li.active').length === 0) {
   //  $('ul.nav > li').first().addClass('active');
   //}
 
+
+  /**
+   * Who, me?
+   */
   $('.contactme').attr('href', 'mailto:' + ('erk' + String.fromCharCode(Math.pow(2, 7) / 2) + 'erkznp' + String.fromCharCode(Math.pow(7, 2) - 3) + 'pbz').replace(/[a-z]/g, function(c) {
     return String.fromCharCode(122 >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
   }));
 
+
+  /**
+   * Lights off!
+   */
   if($.cookie('lightsoff')) {
     $('html').addClass('lightsoff');
   }
-
   $('#light-switch').click(function(e) {
     var $html = $('html');
     e.preventDefault();
@@ -330,6 +344,16 @@ $(function() {
     }
   });
 
+
+  /**
+   * Tips of tools?
+   */
+  $('a[rel=tooltip]').tooltip();
+
+
+  /**
+   * Binary Life!
+   */
   //console.log('window: ' + $(window).width() + ' x ' + $(window).height());
   //console.log('document: ' + $(document).width() + ' x ' + $(document).height());
   //console.log('body: ' + $(document.body).width() + ' x ' + $(document.body).height());
@@ -351,6 +375,9 @@ $(function() {
     b.binaryLife({text: bgText});
   }
 
+  /**
+   * Shhh! It'a a secret!
+   */
   var kkeys = [], konami = '38,38,40,40,37,39,37,39,66,65';
   $(document).keydown(function(e) {
     kkeys.push(e.which);
