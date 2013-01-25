@@ -39,7 +39,7 @@
   <script src="{{ '/js/site.min.js' | cachebust_url }} "></script>
 
   {% if page.js %}{% for js in page.js %}
-  <script src="{{ js }}"></script>
+  <script src="{{ js | cachebust_url }}"></script>
   {% endfor %}{% endif %}
 
   {% include analytics %}
