@@ -18,9 +18,11 @@ exclude: [
 permalink: /blog/:title
 pygments: true
 
-markdown: rdiscount
-rdiscount:
-  extensions: [smart, footnotes]
+markdown: kramdown
+#markdown: redcarpet
+#markdown: rdiscount
+#rdiscount:
+#  extensions: [smart, footnotes]
 
 author:
   name: Rex McConnell

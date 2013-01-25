@@ -17,11 +17,11 @@ module Jekyll
       # Process markdown within div blocks that have a markdown="1" attribute
       # The attribute is removed.
       doc = Nokogiri::HTML::fragment(content)
-      #doc.xpath("//*[@markdown='1']").each do |el|
-      doc.xpath("//div[@markdown='1']").each do |el|
-        el.inner_html = RDiscount.new(el.inner_html, *@rdiscount_extensions).to_html
-        el.remove_attribute('markdown')
-      end
+      ##doc.xpath("//*[@markdown='1']").each do |el|
+      #doc.xpath("//div[@markdown='1']").each do |el|
+      #  el.inner_html = RDiscount.new(el.inner_html, *@rdiscount_extensions).to_html
+      #  el.remove_attribute('markdown')
+      #end
       content = doc.to_s
 
       # Abbreviations
