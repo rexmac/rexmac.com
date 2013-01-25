@@ -27,7 +27,7 @@
 <IfModule mod_headers.c>
   Header set X-UA-Compatible "IE=Edge,chrome=1"
   # mod_headers can't match by content-type, but we don't want to send this header on *everything*...
-  <FilesMatch "\.(js|css|gif|png|jpe?g|pdf|xml|oga|ogg|m4a|ogv|mp4|m4v|webm|svg|svgz|eot|ttf|otf|woff|ico|webp|appcache|manifest|htc|crx|oex|xpi|safariextz|vcf)$" >
+  <FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svg|svgz|ttf|vcf|webm|webp|woff|xml|xpi)$">
     Header unset X-UA-Compatible
   </FilesMatch>
 
@@ -63,7 +63,7 @@
 <IfModule mod_setenvif.c>
   <IfModule mod_headers.c>
     # mod_headers, y u no match by Content-Type?!
-    <FilesMatch "\.(gif|png|jpe?g|svg|svgz|ico|webp)$">
+    <FilesMatch "\.(gif|ico|jpe?g|png|svg|svgz|webp)$">
       SetEnvIf Origin ":" IS_CORS
       Header set Access-Control-Allow-Origin "*" env=IS_CORS
     </FilesMatch>
@@ -80,7 +80,7 @@
 # subdomains like "subdomain.example.com".
 
 <IfModule mod_headers.c>
-  <FilesMatch "\.(ttf|ttc|otf|eot|woff|font.css)$">
+  <FilesMatch "\.(eot|font.css|otf|ttc|ttf|woff)$">
     Header set Access-Control-Allow-Origin "*"
   </FilesMatch>
 </IfModule>
@@ -97,12 +97,12 @@ AddType application/javascript         js jsonp
 AddType application/json               json
 
 # Audio
-AddType audio/ogg                      oga ogg
 AddType audio/mp4                      m4a f4a f4b
+AddType audio/ogg                      oga ogg
 
 # Video
-AddType video/ogg                      ogv
 AddType video/mp4                      mp4 m4v f4v f4p
+AddType video/ogg                      ogv
 AddType video/webm                     webm
 AddType video/x-flv                    flv
 
@@ -115,23 +115,23 @@ AddEncoding gzip                       svgz
 # Webfonts
 AddType application/vnd.ms-fontobject  eot
 AddType application/x-font-ttf         ttf ttc
-AddType font/opentype                  otf
 AddType application/x-font-woff        woff
+AddType font/opentype                  otf
 
 # Assorted types
-AddType image/x-icon                        ico
-AddType image/webp                          webp
-AddType text/cache-manifest                 appcache manifest
-AddType text/x-component                    htc
-AddType application/xml                     rss atom xml rdf
+AddType application/octet-stream            safariextz
 AddType application/x-chrome-extension      crx
 AddType application/x-opera-extension       oex
-AddType application/x-xpinstall             xpi
-AddType application/octet-stream            safariextz
+AddType application/x-shockwave-flash       swf
 AddType application/x-web-app-manifest+json webapp
-AddType text/x-vcard                        vcf
-AddType application/x-shockwave-flush       vswf
+AddType application/x-xpinstall             xpi
+AddType application/xml                     rss atom xml rdf
+AddType image/webp                          webp
+AddType image/x-icon                        ico
+AddType text/cache-manifest                 appcache manifest
 AddType text/vtt                            vtt
+AddType text/x-component                    htc
+AddType text/x-vcard                        vcf
 
 
 # ----------------------------------------------------------------------
@@ -144,15 +144,14 @@ AddType text/vtt                            vtt
 # and they would be included into this single file.
 
 # This is not in use in the boilerplate as it stands. You may
-# choose to name your files in this way for this advantage or
-# concatenate and minify them manually.
-# Disabled by default.
+# choose to use this technique if you do not have a build process.
 
 #<FilesMatch "\.combined\.js$">
 #  Options +Includes
 #  AddOutputFilterByType INCLUDES application/javascript application/json
 #  SetOutputFilter INCLUDES
 #</FilesMatch>
+
 #<FilesMatch "\.combined\.css$">
 #  Options +Includes
 #  AddOutputFilterByType INCLUDES text/css
@@ -231,7 +230,7 @@ AddType text/vtt                            vtt
 # Additionally, consider that outdated proxies may miscache
 #   www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/
 
-# If you don't use filenames to version, lower the CSS  and JS to something like
+# If you don't use filenames to version, lower the CSS and JS to something like
 # "access plus 1 week".
 
 <IfModule mod_expires.c>
@@ -247,40 +246,39 @@ AddType text/vtt                            vtt
   ExpiresByType text/html                 "access plus 0 seconds"
 
 # Data
-  ExpiresByType text/xml                  "access plus 0 seconds"
-  ExpiresByType application/xml           "access plus 0 seconds"
   ExpiresByType application/json          "access plus 0 seconds"
+  ExpiresByType application/xml           "access plus 0 seconds"
+  ExpiresByType text/xml                  "access plus 0 seconds"
 
 # Feed
-  ExpiresByType application/rss+xml       "access plus 1 hour"
   ExpiresByType application/atom+xml      "access plus 1 hour"
+  ExpiresByType application/rss+xml       "access plus 1 hour"
 
 # Favicon (cannot be renamed)
   ExpiresByType image/x-icon              "access plus 1 week"
 
 # Media: images, video, audio
-  ExpiresByType image/gif                 "access plus 1 month"
-  ExpiresByType image/png                 "access plus 1 month"
-  ExpiresByType image/jpg                 "access plus 1 month"
-  ExpiresByType image/jpeg                "access plus 1 month"
-  ExpiresByType video/ogg                 "access plus 1 month"
   ExpiresByType audio/ogg                 "access plus 1 month"
+  ExpiresByType image/gif                 "access plus 1 month"
+  ExpiresByType image/jpeg                "access plus 1 month"
+  ExpiresByType image/png                 "access plus 1 month"
   ExpiresByType video/mp4                 "access plus 1 month"
+  ExpiresByType video/ogg                 "access plus 1 month"
   ExpiresByType video/webm                "access plus 1 month"
 
 # HTC files  (css3pie)
   ExpiresByType text/x-component          "access plus 1 month"
 
 # Webfonts
-  ExpiresByType application/x-font-ttf    "access plus 1 month"
-  ExpiresByType font/opentype             "access plus 1 month"
-  ExpiresByType application/x-font-woff   "access plus 1 month"
-  ExpiresByType image/svg+xml             "access plus 1 month"
   ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+  ExpiresByType application/x-font-ttf    "access plus 1 month"
+  ExpiresByType application/x-font-woff   "access plus 1 month"
+  ExpiresByType font/opentype             "access plus 1 month"
+  ExpiresByType image/svg+xml             "access plus 1 month"
 
 # CSS and JavaScript
-  ExpiresByType text/css                  "access plus 1 year"
   ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType text/css                  "access plus 1 year"
 
 </IfModule>
 
@@ -318,8 +316,7 @@ FileETag None
 # ----------------------------------------------------------------------
 
 # The following directives stop screen flicker in IE on CSS rollovers - in
-# combination with the "ExpiresByType" rules for images (see above). If
-# needed, un-comment the following rules.
+# combination with the "ExpiresByType" rules for images (see above).
 
 # BrowserMatch "MSIE" brokenvary=1
 # BrowserMatch "Mozilla/4.[0-9]{2}" brokenvary=1
@@ -364,7 +361,7 @@ FileETag None
 # 'foo' is your directory.
 
 # If your web host doesn't allow the FollowSymlinks option, you may need to
-# comment it out and use `Options +SymLinksOfOwnerMatch`, but be aware of the
+# comment it out and use `Options +SymLinksIfOwnerMatch`, but be aware of the
 # performance impact: http://goo.gl/Mluzd
 
 <IfModule mod_rewrite.c>
@@ -387,7 +384,7 @@ FileETag None
 # By default option 1 (no "www.") is activated.
 # no-www.org/faq.php?q=class_b
 
-# If you;d prefer to use option 2, just comment out all option 1 lines
+# If you'd prefer to use option 2, just comment out all option 1 lines
 # and uncomment option 2.
 
 # IMPORTANT: NEVER USE BOTH RULES AT THE SAME TIME!
@@ -395,7 +392,7 @@ FileETag None
 # ----------------------------------------------------------------------
 
 # Option 1:
-# Rewrite "www.example.com -> example.com"
+# Rewrite "www.example.com -> example.com".
 
 <IfModule mod_rewrite.c>
   RewriteCond %{HTTPS} !=on
@@ -423,10 +420,10 @@ FileETag None
 
 # If you're not using the build script to manage your filename version revving,
 # you might want to consider enabling this, which will route requests for
-# /css/style.20110203.css to /css/style.css
+# `/css/style.20110203.css` to `/css/style.css`.
 
 # To understand why this is important and a better idea than all.css?v1231,
-# read: github.com/h5bp/html5-boilerplate/wiki/cachebusting
+# please refer to the bundled documentation about `.htaccess`.
 
 # <IfModule mod_rewrite.c>
 #   RewriteCond %{REQUEST_FILENAME} !-f
@@ -467,7 +464,6 @@ Options -MultiViews
 # If you are hosting your site in subdirectory, adjust this accordingly
 #    e.g. ErrorDocument 404 /subdir/404.html
 ErrorDocument 404 /404/
-#ErrorDocument 500 /500/
 
 
 # ----------------------------------------------------------------------
@@ -501,7 +497,7 @@ AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
 # period. This includes directories used by version control systems such as
 # Subversion or Git.
 <IfModule mod_rewrite.c>
-  RewriteCond %{SCRIPT_FILENAME} -d
+  RewriteCond %{SCRIPT_FILENAME} -d [OR]
   RewriteCond %{SCRIPT_FILENAME} -f
   RewriteRule "(^|/)\." - [F]
 </IfModule>
@@ -509,7 +505,7 @@ AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
 # Block access to backup and source files. These files may be left by some
 # text/html editors and pose a great security danger, when anyone can access
 # them.
-<FilesMatch "(\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$">
+<FilesMatch "(\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|swp)|~)$">
   Order allow,deny
   Deny from all
   Satisfy All
@@ -521,7 +517,7 @@ AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
 # This closes a major security hole that is abused by most XSS (cross-site
 # scripting) attacks. For more information: http://php.net/register_globals
 #
-# IF REGISTER_GLOBALS DIRECTIVE CAUSES 500 INTERNAL SERVER ERRORS :
+# IF REGISTER_GLOBALS DIRECTIVE CAUSES 500 INTERNAL SERVER ERRORS:
 #
 # Your server does not allow PHP directives to be set via .htaccess. In that
 # case you must make this change in your php.ini file instead. If you are
@@ -535,6 +531,9 @@ php_flag register_globals Off
 
 # Rename session cookie to something else, than PHPSESSID
 php_value session.name rexmacsid
+
+# Disable magic quotes (This feature has been DEPRECATED as of PHP 5.3.0 and REMOVED as of PHP 5.4.0.)
+# php_flag magic_quotes_gpc Off
 
 # Do not show you are using PHP
 # Note: Move this line to php.ini since it won't work in .htaccess
@@ -572,7 +571,7 @@ php_value session.name rexmacsid
 # php_value error_append_string " "
 
 # Increase cookie security
-<IfModule php5_module>
+<IfModule mod_php5.c>
   php_value session.cookie_httponly true
 </IfModule>
 
