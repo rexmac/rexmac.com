@@ -494,7 +494,7 @@ img.thumbnail {
   display: inline-block;
   width: 16px;
   height: 16px;
-  background-image: image-url('browser_logos-16.png') 0 0;
+  background-image: image-url('browser_logos-16.png');
   background-repeat: no-repeat;
 }
 .icon-browser-chrome { background-position: -2px 0; }
