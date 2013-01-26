@@ -3,14 +3,14 @@ layout: page
 title: Projects
 ---
 
-## <a id="digital"></a>Digital
+## <a id="digital"></a><a id="software"></a>Software
 
 * [Zyndax](http://github.com/rexmac/zyndax)
 * [MTurk-Qualtrics Helper](/mturk)
 * [1-Click Class](http://oneclickclass.com/)
 * [jQuery Collapsible Fieldset plugin](http://github.com/rexmac/jquery-collapsibleFieldset)
 
-## <a id="analog"></a>Analog
+## <a id="analog"></a><a id="hardware"></a>Hardware
 
 In the future, I hope to have dedicated pages for each of the projects below with notes and photos of my personal experiences. For now, I am linking to the pages where I purchased the kits or first heard of the projects.
 
