@@ -64,7 +64,11 @@ I have experience in the installation, configuration, and usage of all versions 
 
 ## Web Presence
 
+* [GitHub](http://github.com/rexmac)
+* [Goolge+](http://gplus.to/rexmac)
 * [last.fm](http://last.fm/user/rexmac82)
-* [Spotify](http://open.spotify.com/_rexmac)
+* [Spotify](http://open.spotify.com/user/_rexmac)
+* [StackOverflow](http://stackoverflow.com/users/624093/rexmac)
 * [Steam](http://steamcommunity.com/id/rexmac82)
 * [Subsonic server](#){:.strikethrough} Currently down until I find a new home for my server.
+* [Twitter](http://twitter.com/_rexmac)
