@@ -66,6 +66,7 @@ I have experience in the installation, configuration, and usage of all versions 
 
 * [GitHub](http://github.com/rexmac)
 * [Goolge+](http://gplus.to/rexmac)
+* [jsFiddle](http://jsfiddle.net/user/rexmac)
 * [last.fm](http://last.fm/user/rexmac82)
 * [Spotify](http://open.spotify.com/user/_rexmac)
 * [StackOverflow](http://stackoverflow.com/users/624093/rexmac)
