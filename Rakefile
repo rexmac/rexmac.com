@@ -25,13 +25,15 @@ end
 
 task :build do
   print "Building website..."
+  Rake::Task["css"].invoke
+  Rake::Task["js"].invoke
   if !which("jekyll")
     puts "failed. - jekyll executable not found"
   else
     #system "jekyll" + ENV['JEKYLL_ENV'] !== 'development' ? " > /dev/null 2>&1"
     system "jekyll"
-    puts "done."
   end
+  puts "done."
 end
 
 task :new do
