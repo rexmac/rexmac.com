@@ -4,7 +4,7 @@ title: 'MTurk-Qualtrics-Helper'
 description: 'The MTurk-Qualtrics Helper aims to be a simple web app to help create Amazon Mechanical Turk HITs for Qualtrics surveys.'
 no_sidebar: true
 credits: 'Browser icons courtesy of [Paul Irish](http://paulirish.com/2010/high-res-browser-icons/).'
-js: ["/js/libs/hmac-sha1-b64.min.js", "/js/mturk.js"]
+js: ["/js/libs/hmac-sha1-b64.min.js", "/js/mturk.min.js"]
 ---
 
 <div class="alert alert-warn">
@@ -144,7 +144,7 @@ Copy and paste the following Javascript code into the header of your Qualtrics.c
               <label class="control-label" for="reward">Reward amount:</label>
               <div class="controls">
                 <div class="input-prepend">
-                  <span class="add-on">$</span><input type="text" class="span1" name="reward" id="reward" placeholder="0.50" title="Amount to be paid to each Worker (in USD) for completion of the HIt/survey." />
+                  <span class="add-on">$</span><input type="text" class="span1" name="reward" id="reward" placeholder="0.50" title="Amount to be paid to each Worker (in USD) for completion of the HIT/survey." />
                 </div>
               </div>
             </div>
@@ -198,8 +198,8 @@ Copy and paste the following Javascript code into the header of your Qualtrics.c
                   <option value="include" label="Include">Include</option>
                   <option value="exclude" label="Exclude">Exclude</option>
                 </select>
-                <select multiple="multiple" class="auto-width" name="country[]" id="country" title="The list of countries in which Workers must reside (or not reside) in order to access your HIt/survey."></select>
-                <p class="help-block">The list of countries in which Workers must reside (or not reside) in order to access your HIt/survey.</p>
+                <select multiple="multiple" class="auto-width" name="country[]" id="country" title="The list of countries in which Workers must reside (or not reside) in order to access your HIT/survey."></select>
+                <p class="help-block">The list of countries in which Workers must reside (or not reside) in order to access your HIT/survey.</p>
               </div>
             </div>
 
