@@ -3,6 +3,7 @@
 //@import "compass/css3";
 //@import "compass/typography/links/link-colors";
 @import "compass";
+@import "font-awesome";
 
 $link-color: $linkColor;
 $noise-bg: image-url('noise.png') 0 0 !default;
@@ -287,14 +288,6 @@ textarea {
     color: #fff;
   }
 }
-.nav > .active > a > [class^="icon-"],
-.nav > .active > a > [class*="icon-"] {
-  background-image: $icons-sprite;
-}
-.lightsoff .navbar i[class^="icon-"],
-.lightsoff .navbar i[class*=" icon-"] {
-  background-image: $icons-white-sprite;
-}
 .navbar .nav > li.active > a,
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover,
@@ -425,19 +418,8 @@ img.thumbnail {
     color: #f5f5f5; //@navbarInverseLinkColorHover;
     @include gradient-vertical($navbarInverseBackgroundHighlight, $navbarInverseBackground);
   }
-  i {
-    position: absolute;
-    top: 50%;
-    margin-top: -7px;
-  }
-  i[class^="icon-"],
-  i[class*=" icon-"] {
-    .lightsoff & {
-      background-image: $icons-white-sprite;
-    }
-  }
   span {
-    margin-left: $baseLineHeight * 1.5;
+    margin-left: $baseLineHeight;
   }
 }
 

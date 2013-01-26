@@ -599,7 +599,7 @@ RewriteRule ^(.*)$ http://blog.rexmac.com/$1 [QSA,L]
 
 # Allow asset requests for blog. sub-domain to pass through
 RewriteCond %{HTTP_HOST} ^blog\.* [NC]
-RewriteCond %{REQUEST_URI} ^/(?:(?:404|css|img|js)/.*)|(?:favicon\.ico|robots\.txt)$ [NC]
+RewriteCond %{REQUEST_URI} ^/(?:(?:404|css|font|img|js)/.*)|(?:favicon\.ico|robots\.txt)$ [NC]
 RewriteCond %{REQUEST_FILENAME} -s [OR]
 RewriteCond %{REQUEST_FILENAME} -l [OR]
 RewriteCond %{REQUEST_FILENAME} -d
