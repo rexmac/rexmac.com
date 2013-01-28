@@ -7,4 +7,5 @@ _zfapp/logs
 *.sublime-*
 Gemfile.lock
 css
+js/mturk.min.js
 js/site.min.js
