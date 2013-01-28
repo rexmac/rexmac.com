@@ -41,17 +41,20 @@
       }
 
       function createFCBK() {
-        holder = $('<ul class="holder"></ul>').width(options.width);
+        var wrapper = $('<div class="fcbkcomplete"></div>');
         if (options.attachto) {
           if (typeof(options.attachto) == "object") {
-            options.attachto.append(holder);
+            options.attachto.append(wrapper);
           } else {
-            $(options.attachto).append(holder);
+            $(options.attachto).append(wrapper);
           }
         } else {
-          element.after(holder);
+          element.after(wrapper);
         }
+        holder = $('<ul class="holder"></ul>').width(options.width);
+        wrapper.append(holder);
         complete = $('<div class="facebook-auto">').width(options.width);
+        complete.css('margin-left', ((holder[0].offsetWidth - options.width) / 2));
         if (options.complete_text != "") {
           var completeText = options.complete_text;
           complete.append('<div class="default">' + completeText +  '</div>');
