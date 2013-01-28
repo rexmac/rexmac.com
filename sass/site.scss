@@ -683,6 +683,8 @@ img.thumbnail {
    ========================================================================== */
 /* Copyright: Guillermo Rauch <http://devthought.com/> - Distributed under MIT - Keep this message! */
 
+.fcbkcomplete { display: inline-block; }
+
 /* TextboxList sample CSS */
 ul.holder {
   margin: 0;
@@ -780,6 +782,7 @@ ul.holder li.bit-box-focus a.closebutton:hover {
   position: absolute;
   background: $grayLighter;
   z-index: 1001;
+  color: #333;
 }
 .facebook-auto .select_all_items {
   display: block;
