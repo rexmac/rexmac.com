@@ -18,6 +18,9 @@
  * limitations under the License.
  * ========================================================== */
 
+/* ===========================================================
+ * Added 'placementselector' option - Rex McConnell 2013-01-28
+ * =========================================================== */
 
 !function ($) {
 
@@ -121,7 +124,7 @@
         $tip
           .detach()
           .css({ top: 0, left: 0, display: 'block' })
-          .insertAfter(this.$element)
+          .insertAfter(this.options.placementselector ? $(this.options.placementselector) : this.$element)
 
         pos = this.getPosition(inside)
 
@@ -194,9 +197,10 @@
     }
 
   , getPosition: function (inside) {
-      return $.extend({}, (inside ? {top: 0, left: 0} : this.$element.offset()), {
-        width: this.$element[0].offsetWidth
-      , height: this.$element[0].offsetHeight
+      var $el = this.options.placementselector ? $(this.options.placementselector) : this.$element;
+      return $.extend({}, (inside ? {top: 0, left: 0} : $el.offset()), {
+        width: $el[0].offsetWidth
+      , height: $el[0].offsetHeight
       })
     }
 
@@ -267,6 +271,7 @@
   $.fn.tooltip.defaults = {
     animation: true
   , placement: 'top'
+  , placementselector: false
   , selector: false
   , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   , trigger: 'hover'
