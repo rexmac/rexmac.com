@@ -57,17 +57,17 @@ its name implies. After removing the contents of the "blank" template, my
 first thought was to just insert an `<iframe>` and point it to the URL of my
 fiancée's survey.
 
-```<iframe width=”100%” height=”100%” src=”[YOUR_URL_HERE]“></iframe>```
+```<iframe width="100%" height="100%" src="YOUR_URL_HERE"></iframe>```
 
 Unfortunately, this solution has several major flaws. First, AMT's web
 interface requires that your HIT template contain at least one question, i.e.
-an `<input>` element with a name prefixed with “Q1″. Adding an `<input>`
-element of type “hidden” satisfies this requirement, but it also leads to the
+an `<input>` element with a name prefixed with "Q1". Adding an `<input>`
+element of type "hidden" satisfies this requirement, but it also leads to the
 next problem. Now that the survey meets the requirement of having at least one
 "question", AMT inserts a "Submit" button at the bottom of the frame. The idea
 is that the user answers your "question" and then clicks the "Submit" button
 to claim their reward. In our scenario, the "question" that we want the user
-to answer is the survey in the `<iframe>`. However, there is no obvious way of
+to answer is the survey in the `iframe`. However, there is no obvious way of
 preventing the user from clicking the "Submit" button before completing the
 survey. In other words, there is no way to prevent the user from getting paid
 for doing nothing! _Author's note: If you know of a method to prevent this
@@ -138,4 +138,4 @@ methods have worked for my fiancée's surveys on a paid account. I have an idea
 for a fourth method that should work in all conditions, but I have not yet
 implemented it.
 
-All code is on [github](http://github.com/rexmac/MTurk-Qualtrics-Helper/).
+All code is available on [github](http://github.com/rexmac/MTurk-Qualtrics-Helper/).
