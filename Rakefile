@@ -117,7 +117,7 @@ task :deploy do
   elsif CONFIG['rsync_params'].nil?
     puts "failed. - no rsync settings found"
   else
-    #system "rsync #{CONFIG['rsync_params']}"
+    system "rsync #{CONFIG['rsync_params']}"
     puts "done."
   end
 end

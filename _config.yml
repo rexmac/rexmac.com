@@ -47,4 +47,4 @@ analytics:
   google:
     tracking_id: 'UA-26354182-1'
 
-rsync_params:
+rsync_params: "-cvzr _site/ rexmac@rexmac.com:~/public_html/"
