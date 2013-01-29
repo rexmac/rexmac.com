@@ -20,10 +20,6 @@ permalink: /blog/:title
 pygments: true
 
 markdown: kramdown
-#markdown: redcarpet
-#markdown: rdiscount
-#rdiscount:
-#  extensions: [smart, footnotes]
 
 author:
   name: Rex McConnell
@@ -47,9 +43,8 @@ jsmincat: [
 ]
 
 analytics:
-  #provider: false
   provider: google
   google:
-    tracking_id: 'UA-XXXXX-X'
+    tracking_id: 'UA-26354182-1'
 
 rsync_params:
