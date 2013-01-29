@@ -33,9 +33,13 @@
     $("body").append(config.container);
   });
 
-  function getNotificationElement() {
+  function getNotificationElement(icon) {
+    var hoverStyles = $.extend({}, config.notificationStylesHover);
+    if(icon) {
+      delete hoverStyles.cursor;
+    }
     return $("<div>").css(config.notificationStyles).hover(function() {
-      $(this).css(config.notificationStylesHover);
+      $(this).css(hoverStyles);
     }, function() {
       $(this).css(config.notificationStyles);
     });
@@ -44,9 +48,11 @@
   var Notifier = window.Notifier = {};
 
   Notifier.notify = function(message, title, iconUrl, timeOut) {
-    var notificationElement = getNotificationElement();
+    var notificationElement;
 
     timeOut = (typeof(timeOut) !== "undefined" && timeOut !== null) ? timeOut : config.defaultTimeOut;
+
+    notificationElement = getNotificationElement('icon' === timeOut);
 
     if (iconUrl) {
       var iconElement = $("<img/>", {
@@ -86,23 +92,38 @@
 
     notificationElement.append(textElement);
 
-    if(timeOut) {
+    if($.isNumeric(timeOut)) {
       notificationElement.delay(timeOut).fadeOut(function(){
         notificationElement.remove();
       });
+    } else if('icon' === timeOut) {
+      notificationElement.append($('<i/>')
+        .addClass('icon icon-remove')
+        .css({
+          'position': 'absolute',
+          'top': '3px',
+          'right': '6px',
+          'cursor': 'pointer'
+        }).bind('click', function() {
+          notificationElement.remove();
+        })
+      );
     } else {
       notificationElement.append($('<div/>')
-        .css('color', '#666')
-        .css('font-size', '80%')
-        .css('font-weight', 'oblique')
-        .css('padding-top', '0.5em')
-        .css('text-align', 'center')
-        .text('Click to close')
+        .css({
+          'color': '#666',
+          'font-size': '80%',
+          'font-weight': 'oblique',
+          'padding-top': '0.5em',
+          'text-align': 'center'
+        }).text('Click to close')
       );
     }
-    notificationElement.bind("click", function() {
-      notificationElement.hide();
-    });
+    if('icon' !== timeOut) {
+      notificationElement.bind("click", function() {
+        notificationElement.remove();
+      });
+    }
 
     config.container.prepend(notificationElement);
   };
