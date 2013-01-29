@@ -38,23 +38,23 @@ $(function() {
 
   $('#mturkQualtricsHelperForm').validate({
     rules: {
-      /*accessKeyId: 'required',
-      accessKey: 'required',
-      title: 'required',
-      surveyUrl: {
+      AccessKeyId: 'required',
+      AccessKey: 'required',
+      Title: 'required',
+      ExternalUrl: {
         required: true,
         url: true
       },
-      description: 'required',
-      frameHeight: {
+      Description: 'required',
+      FrameHeight: {
         required: true,
         number: true
       },
-      max: {
+      MaxAssignments: {
         required: true,
         number: true
       },
-      reward: {
+      'Reward.1.Amount': {
         required: true,
         number: true
       },
@@ -69,9 +69,15 @@ $(function() {
       'lifetime[time]': {
         required: true,
         number: true
-      }*/
+      },
+      confirmation: 'required'
     },
-    /*errorPlacement: function(error, element) {
+    messages: {
+      confirmation: {
+        required: 'Please check the box above'
+      }
+    },
+    errorPlacement: function(error, element) {
       element.parents('.controls').append(error);
     },
     errorElement: 'span',
@@ -81,13 +87,24 @@ $(function() {
     },
     unhighlight: function(element, errorClass, validClass) {
       $(element).parents('.control-group').removeClass('error');
-    },*/
+    },
     submitHandler: function(form) {
-      console.log('form submit');
       var d = new Date(),
-          timestamp, signature;
+          service = 'AWSMechanicalTurkRequester',
+          operation = 'CreateHIT',
+          awsVersion = '2012-03-25',
+          timeUnits = [], awsData = {}, awsUrl;
 
-      timestamp = sprintf('%4d-%02d-%02dT%02d:%02d:%02d+00:00',
+      timeUnits = [
+        null,
+        60,
+        60 * 60,
+        60 * 60 * 24,
+        60 * 60 * 24 * 7,
+        60 * 60 * 24 * 30
+      ];
+
+      awsData.Timestamp = sprintf('%4d-%02d-%02dT%02d:%02d:%02d+00:00',
         d.getUTCFullYear(),
         (d.getUTCMonth() + 1),
         d.getUTCDate(),
@@ -96,44 +113,105 @@ $(function() {
         d.getUTCSeconds()
       );
 
-      signature = CryptoJS.HmacSHA1(('AWSMechanicalTurkRequesterCreateHIT' + timestamp), $('#accessKey').val()).toString(CryptoJS.enc.Base64);
-      console.log('signature', signature);
+      awsData.Signature = CryptoJS.HmacSHA1((service + operation + awsData.Timestamp), $('#accessKey').val()).toString(CryptoJS.enc.Base64);
 
-      $('#signature').val(signature);
-      $('#timestamp').val(timestamp);
-      $('#accessKey').val('');
+      $.each($(form).serializeArray(), function(i, o) {
+        if('Sandbox' === o.name) {
+          awsData.Sandbox = 1;
+        } else if('country[]' === o.name) {
+          awsData.country = $('#country').val();
+        } else {
+          awsData[o.name] = o.value;
+        }
+      });
+
+      awsData['AutoApprovalDelayInSeconds'] = awsData['autoApprovalDelay[time]'] * timeUnits[awsData['autoApprovalDelay[units]']];
+      awsData['AssignmentDurationInSeconds'] = awsData['duration[time]'] * timeUnits[awsData['duration[units]']];
+      awsData['LifetimeInSeconds'] = awsData['lifetime[time]'] * timeUnits[awsData['lifetime[units]']];
+      delete awsData['autoApprovalDelay[time]'];
+      delete awsData['autoApprovalDelay[units]'];
+      delete awsData['duration[time]'];
+      delete awsData['duration[units]'];
+      delete awsData['lifetime[time]'];
+      delete awsData['lifetime[units]'];
+
+      if(awsData['country']) {
+        $.each(awsData['country'], function(i, c) {
+          awsData['QualificationRequirement.' + ++i + '.QualificationTypeId'] = '00000000000000000071';
+          awsData['QualificationRequirement.' +   i + '.Comparator'] = (awsData['countryStatus'] === 'exclude' ? 'Not' : '') + 'EqualTo';
+          awsData['QualificationRequirement.' +   i + '.LocaleValue.Country'] = c;
+        });
+      }
+      delete awsData['country'];
+      delete awsData['countryStatus'];
+
+      awsData['RequesterAnnotation'] = 'uid';
+      awsData['Reward.1.CurrencyCode'] = 'USD';
+      if(awsData['Sandbox']) awsData['ExternalUrl'] += '&amp;test=1';
+
+      awsData['Question'] = '<ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd">';
+      awsData['Question'] += '<ExternalURL>' + awsData['ExternalUrl'] + '</ExternalURL>';
+      awsData['Question'] += '<FrameHeight>' + awsData['FrameHeight'] + '</FrameHeight>';
+      awsData['Question'] += '</ExternalQuestion>';
+      delete awsData['ExternalUrl'];
+      delete awsData['FrameHeight'];
+
+      awsUrl = sprintf('https://mechanicalturk.sandbox.amazonaws.com/?Service=%s&Version=%s&Operation=%s',
+        service,
+        awsVersion,
+        operation
+      );
+      $.each(awsData, function(k, v) {
+        awsUrl += '&' + encodeURIComponent(k) + '=' + encodeURIComponent(v);
+      });
+      awsUrl = awsUrl.replace('ExternalQuestion%20xmlns', 'ExternalQuestion+xmlns');
 
       $.ajax({
         beforeSend: function() {
-          $('#step2').find('.alert-success, .alert-error').remove();
           $(document.body).showLoading();
         },
         cache: false,
         complete: function() {
-          $('html, body, #step2').animate({scrollTop: 0}, 'slow', function() {
-            $(document.body).hideLoading();
-          });
+          $(document.body).hideLoading();
         },
-        data: $(form).serialize(),
-        success: function(data) {
-          var msg = data.messages.success[0];
-          console.log('msg', msg);
-          //msg += sprintf(' You can <a href="%s" target="_blank" title="Manage HIT (Requester)">manage<span class="ui-icon ui-icon-newwin"></span></a> and <a href="%s" target="_blank" title="Preview HIT as a Worker">preview<span class="ui-icon ui-icon-newwin"></span></a> your HIT on Amazon Mechanical Turk.',
-          //  data.manageUrl,
-          //  data.previewUrl
-          //);
-          //$('#step2').showMessage({
-          //  thisMessage: data.messages.success,
-          //  className: 'success'
-          //});
-          //$('#step2').append('<div class="alert alert-success">' + data.messages.success + '</div>');
-          Notifier.success(msg);
+        data: {
+          awsUrl: awsUrl,
+          _render: 'json'
         },
-        //url: 'http://rexmac.com/mturk/createExternalHit'
-        url: 'http://rexmac.com/mturk/createExternalHit'
-        //url: 'http://rexmac.com/mturk/createexternalhit'
+        dataType: 'jsonp',
+        jsonp: '_callback',
+        success: function(responseData) {
+          if(responseData.count > 0) { // success?
+            if(responseData.value.items[0].HIT.Request.IsValid === 'True') { // success
+              var manageUrl, previewUrl, msg;
+              manageUrl = sprintf('https://requester%s.mturk.com/mturk/manageHIT?HITId=%s',
+                awsData['Sandbox'] ? 'sandbox' : '',
+                responseData.value.items[0].HIT.HITId
+              );
+              previewUrl = sprintf('https://%s.mturk.com/mturk/preview?groupId=%s',
+                awsData['Sandbox'] ? 'workersandbox' : 'www',
+                responseData.value.items[0].HIT.HITTypeId
+              );
+              msg = sprintf('You can <a href="%s" title="Manage HIT (Requester)">manage</a> and <a href="%s" title="Preview HIT as a Worker">preview</a> your HIT on Amazon Mechanical Turk.',
+                manageUrl,
+                previewUrl
+              );
+              Notifier.success(msg, 'Success', 'icon');
+            } else { // AWS failure
+              Notifier.error(
+                responseData.value.items[0].HIT.Request.Errors.Error.Message,
+                responseData.value.items[0].HIT.Request.Errors.Error.Code,
+                'icon'
+              );
+            }
+          } else { // request failure
+            Notifier.error('An unknown error occurred. Please try again.', 'Unknown Error', 'icon');
+          }
+        },
+        url: 'http://pipes.yahoo.com/pipes/pipe.run?_id=2837ae31359fe70fd20497bd54e4dd10'
       });
+
+      return false;
     }
   });
-
 });
