@@ -527,10 +527,10 @@ AddCharset utf-8 .atom .css .js .json .rss .vtt .xml
 # reset everything to PHP defaults. Consult www.php.net for more detailed
 # information about setting PHP directives.
 
-php_flag register_globals Off
+# php_flag register_globals Off
 
 # Rename session cookie to something else, than PHPSESSID
-php_value session.name rexmacsid
+# php_value session.name rexmacsid
 
 # Disable magic quotes (This feature has been DEPRECATED as of PHP 5.3.0 and REMOVED as of PHP 5.4.0.)
 # php_flag magic_quotes_gpc Off
@@ -572,7 +572,7 @@ php_value session.name rexmacsid
 
 # Increase cookie security
 <IfModule mod_php5.c>
-  php_value session.cookie_httponly true
+#  php_value session.cookie_httponly true
 </IfModule>
 
 
@@ -633,5 +633,5 @@ RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^.*$ - [QSA,L]
 
 # Rewrite all other requests to zfapp.php
-RewriteRule ^.*$ zfapp.php [QSA,L]
+#RewriteRule ^.*$ zfapp.php [QSA,L]
 </IfModule>
