@@ -160,8 +160,7 @@ code {
 /* =============================================================================
    Accordions
       ========================================================================== */
-.accordion-group,
-.accordion-inner {
+.accordion-group, .accordion-inner {
   .lightsoff & { border-color: $gray; }
 }
 
@@ -179,8 +178,7 @@ code {
 .alert a {
   .lightsoff & { color: darken($lightsoffLinkColor, 15); }
 }
-.alert a:focus,
-.alert a:hover {
+.alert a:focus, .alert a:hover {
   .lightsoff & { color: darken($lightsoffLinkColorHover, 30); }
 }
 
@@ -249,23 +247,13 @@ textarea {
 }
 
 .control-group.error {
-  > label,
-  .help-block,
-  .help-inline {
+  > label, .help-block, .help-inline {
     .lightsoff & { color: red; }
   }
-  .checkbox,
-  .radio,
-  input,
-  select,
-  textarea {
+  .checkbox, .radio, input, select, textarea {
     .lightsoff & { border-color: red; }
   }
-  .checkbox:focus,
-  .radio:focus,
-  input:focus,
-  select:focus,
-  textarea:focus {
+  .checkbox:focus, .radio:focus, input:focus, select:focus, textarea:focus {
     .lightsoff & { border-color: red; }
     @include box-shadow("inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px red");
   }
@@ -294,11 +282,7 @@ textarea {
     color: #fff;
   }
 }
-.navbar .nav > li.active > a,
-.navbar .nav > li > a:focus,
-.navbar .nav > li > a:hover,
-.navbar .nav > li.active > a > i,
-.navbar .nav > li > a:hover > i {
+.navbar .nav > li.active > a, .navbar .nav > li > a:focus, .navbar .nav > li > a:hover, .navbar .nav > li.active > a > i, .navbar .nav > li > a:hover > i {
   @include opacity(1);
 }
 .navbar-fixed-top {
@@ -373,8 +357,7 @@ img.thumbnail {
         @include gradient-vertical(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
         background-color: $grayDark;
       }
-      &.day,
-      &.month {
+      &.day, &.month {
         background-color: transparent;
         background-image: none;
       }
@@ -578,8 +561,7 @@ img.thumbnail {
 .treemap-legend-end {
   float: right;
 }
-#page-about-me div.treemap,
-#page-about-me div.treemap-legend {
+#page-about-me div.treemap, #page-about-me div.treemap-legend {
   margin-bottom: 1em;
 }
 #page-about-me div.treemap div.treemap-node:last-child a {
@@ -640,9 +622,7 @@ img.thumbnail {
     .face { @include backface-visibility(hidden); }
     .face.back { @include rotateY(180deg); }
   }
-  .navbar &,
-  .navbar & > div,
-  .navbar & .face {
+  .navbar &, .navbar & > div, .navbar & .face {
     width: 40px;
     height: 40px;
   }
@@ -710,8 +690,7 @@ ul.holder li {
   margin: 0 4px 2px 0;
   white-space: nowrap;
 }
-ul.holder li.bit-box,
-ul.holder li.bit-input input {
+ul.holder li.bit-box, ul.holder li.bit-input input {
   //font: 11px "Lucida Grande", "Verdana";
 }
 ul.holder li.bit-box {
@@ -771,8 +750,7 @@ ul.holder li.bit-box a.closebutton {
 ul.holder li.bit-box a.closebutton:hover {
   background-position: 7px;
 }
-ul.holder li.bit-box-focus a.closebutton,
-ul.holder li.bit-box-focus a.closebutton:hover {
+ul.holder li.bit-box-focus a.closebutton, ul.holder li.bit-box-focus a.closebutton:hover {
   background-position: bottom;
 }
 
@@ -872,8 +850,7 @@ ul.holder li.bit-box-focus a.closebutton:hover {
 /* Extends the .visuallyhidden class to allow the element to be focusable
  * when navigated to via the keyboard: h5bp.com/p
  */
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
   clip: auto;
   height: auto;
   margin: 0;
