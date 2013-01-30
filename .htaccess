@@ -607,7 +607,7 @@ RewriteRule ^.*$ - [QSA,L]
 
 # Cache-busting URLs for asset requests from blog. subdomain (ZOMG, there must be a better way)
 RewriteCond %{HTTP_HOST} ^blog\.* [NC]
-RewriteCond %{REQUEST_URI} ^/(?:(?:404|css|img|js)/.*)|(?:favicon\.ico|robots\.txt)$ [NC]
+RewriteCond %{REQUEST_URI} ^/(?:(?:404|css|font|img|js)/.*)|(?:favicon\.ico|robots\.txt)$ [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.+)\.(\d+)\.(js|css|png|jpg|gif)$ $1.$3 [QSA,L]
