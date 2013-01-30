@@ -11,7 +11,7 @@ module Jekyll
       categories = context.registers[:site].categories
 
       categories.keys.each do |category|
-        result << %(<a href="/categories/#{category.slugize}"><strong>#{category}</strong></a> (#{categories[category].length})<br />)
+        result << %(<a href="/blog/categories/#{category.slugize}"><strong>#{category}</strong></a> (#{categories[category].length})<br />)
       end
 
       result

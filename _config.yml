@@ -18,9 +18,9 @@ exclude: [
 ]
 permalink: /blog/:title
 pygments: true
-
 markdown: kramdown
-
+category_dir: /blog/categories
+tag_dir: /blog/tags
 author:
   name: Rex McConnell
   github: rexmac

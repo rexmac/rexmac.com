@@ -89,7 +89,7 @@ module Jekyll
         months.each do |year, m|
           m.each do |month, posts|
             time = Time.new(year, month)
-            result.insert(0, %(<a href="#{time.strftime('/%Y/%m')}"><strong>#{time.strftime('%B %Y')}</strong></a> (#{posts.length})<br />)) # for reverse order
+            result.insert(0, %(<a href="/blog/#{time.strftime('%Y/%m')}"><strong>#{time.strftime('%B %Y')}</strong></a> (#{posts.length})<br />)) # for reverse order
           end
         end
 
