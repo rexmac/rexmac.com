@@ -6,7 +6,7 @@ title: Projects
 ## <a id="digital"></a><a id="software"></a>Software
 
 * [Zyndax](http://github.com/rexmac/zyndax)
-* [MTurk-Qualtrics Helper](/mturk)
+* [MTurk-Qualtrics Helper](/projects/mturk)
 * [1-Click Class](http://oneclickclass.com/)
 * [jQuery Collapsible Fieldset plugin](http://github.com/rexmac/jquery-collapsibleFieldset)
 
