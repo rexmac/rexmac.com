@@ -621,6 +621,9 @@ RewriteRule ^(.*)$ blog/$1 [QSA,L]
 RewriteCond %{HTTP_HOST} !^rexmac\.com(:80)?$ [NC]
 RewriteRule ^(.*)$ http://rexmac.com/$1 [QSA,L]
 
+# Rewrite jquery projects shortcut
+RewriteRule ^jquery/(.*)$ projects/jquery/$1 [QSA,L]
+
 # Cache-busting URLs
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

@@ -11,6 +11,8 @@ title: Projects
   * Just what the name says
 * [jQuery Collapsible Fieldset plugin](http://github.com/rexmac/jquery-collapsibleFieldset)
   * Small jQuery plugin for collapsing fieldsets by clicking their legends
+* [jQuery Treemap plugin](http://rexmac.com/jquery/treemap)
+  * A (simple) jQuery plugin for generating treemaps with (optional) heatmap-style coloring
 * [Zyndax](http://github.com/rexmac/zyndax)
   * An outdated (and obsolete?) library extending [ZendFramework 1](http://framework.zend.com/) to ease development of ZF-based web projects.
 
