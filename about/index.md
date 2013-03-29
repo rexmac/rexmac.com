@@ -44,6 +44,7 @@ I am a polyglot, full-stack programmer. For the last several years, I have been 
 * {:value="90"} [SQL](http://en.wikipedia.org/wiki/SQL)
 * {:value="90"} [WordPress](http://wordpress.org/)
 * {:value="50"} [NodeJS](http://nodejs.org/)
+* {:value="20"} [Symfony2](http://symfony.com/)
 {:#skills-treemap}
 
 Some of the development tools that I have experience with or use on a daily basis include:
