@@ -1,0 +1,40 @@
+/* =============================================================================
+   Glider Tag
+   ========================================================================== */
+#glider-tag-container {
+  height: 16px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: #f9f9f9;
+  .lightsoff & { background: #1d1d1d; }
+}
+#glider-tag {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin: 0 2px 0 0;
+  float: right;
+  .dot {
+    position: absolute;
+    display: block;
+    background: #aaa;
+    background: rgba(0, 0, 0, 0.2);
+    height: 4px;
+    width: 4px;
+    @include border-radius(2px);
+    top: 0;
+    left: 5px;
+    @include transition("all 0.5s ease-in-out");
+    .lightsoff & { background: rgba(255, 255, 255, 0.4); }
+    &:nth-child(2) { top: 5px; left: 10px; }
+    &:nth-child(3) { top: 10px; left: 0; }
+    &:nth-child(4) { top: 10px; left: 5px; }
+    &:nth-child(5) { top: 10px; left: 10px; }
+  }
+  &:hover .dot {
+    background: rgba(0, 0, 0, 0.6);
+    .lightsoff & { background: rgba(255, 255, 255, 0.6); }
+  }
+}

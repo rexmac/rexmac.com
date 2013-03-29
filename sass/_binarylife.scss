@@ -1,0 +1,20 @@
+/* =============================================================================
+   Binary Life
+   ========================================================================== */
+#binary-life {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  z-index: -1;
+  font-size: 10px;
+  background-color: #fcfcfc;
+  color: #e5e5e5;
+  margin: 0;
+  padding: 0;
+  border: none;
+  @include border-radius(none);
+  .lightsoff & {
+    background-color: #1d1d1d;
+    color: #333;
+  }
+}

@@ -1,0 +1,15 @@
+/* =============================================================================
+   Browser icons
+   ========================================================================== */
+.icon-browser {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: image-url('browser_logos-16.png');
+  background-repeat: no-repeat;
+}
+.icon-browser-chrome { background-position: -2px 0; }
+.icon-browser-firefox { background-position: -19px 0; }
+.icon-browser-ie { background-position: -70px 0; }
+.icon-browser-opera { background-position: -36px 0; }
+.icon-browser-safari { background-position: -53px 0; }

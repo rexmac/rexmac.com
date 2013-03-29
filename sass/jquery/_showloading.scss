@@ -1,0 +1,13 @@
+/* =============================================================================
+   jQuery Show Loading Plugin
+   ========================================================================== */
+.loading-indicator {
+  height: 80px;
+  width: 80px;
+  background: image-url('loading.gif') no-repeat center center;
+}
+.loading-indicator-overlay {
+  background-color: #666;
+  @include opacity(.7);
+  cursor: wait;
+}
