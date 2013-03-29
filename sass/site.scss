@@ -35,6 +35,7 @@ $lightsoffLinkColorHover: #5bf;
 .align-content-right { text-align: right; }
 .auto-width { width: auto; }
 .centered { margin-left: auto; margin-right: auto; }
+.chromeframe { margin-bottom: 0; @include border-radius(0!important); }
 .no-bottom { margin-bottom: 0; }
 .no-top { margin-top: 0; }
 .strikethrough { text-decoration: line-through; }
