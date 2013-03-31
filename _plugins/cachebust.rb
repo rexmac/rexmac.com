@@ -16,7 +16,11 @@ module Jekyll
     def cachebust_url(input)
       #File.extname(input)
       #"#{input}?#{Time.now.to_i}"
-      input.gsub(/^(.+)\.([^.]+)$/, "\\1.#{Time.now.to_i}.\\2")
+      if input.include?('://')
+        input
+      else
+        input.gsub(/^(.+)\.([^.]+)$/, "\\1.#{Time.now.to_i}.\\2")
+      end
     end
   end
 end
