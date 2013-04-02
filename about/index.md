@@ -15,11 +15,9 @@ title: "About Me"
 
 As a "[code gorilla](http://en.wikipedia.org/wiki/Computer_programmer)", I have been writing code "<a href="#" rel="tooltip" title="i.e., as a hobby">in the jungle</a>" for over 20 years and "<a href="#" rel="tooltip" title="i.e., professionally">in the zoo</a>" for 7 years. I began as a child with various flavors of [BASIC](http://en.wikipedia.org/wiki/BASIC_Programming) and [Logo](http://en.wikipedia.org/wiki/Logo_%28programming_language%29), before moving on to Visual Basic and then to more advanced languages such as [C](http://en.wikipedia.org/wiki/C_%28programming_language%29)/[C++](http://en.wikipedia.org/wiki/C%2B%2B) and [Java](http://en.wikipedia.com/wiki/Java_%28programming_language%29). I thoroughly enjoy coding and (when necessary) debugging.
 
-I currently work as a full-time contractor for an Internet marketing firm based in [Mountain View, CA](http://en.wikipedia.org/wiki/Mountain_View,_California).
+I am currently looking for _remote_, full-time or contract work. If you know of an exciting job opportunity in web-devleopment, please <a href="#" class="contactme">contact me</a>.
 
 When I'm not coding (which is rare), I enjoy cooking, gaming, brewing beer, and travelling.
-
-I'm currently employed full-time, but I'm always interested in discussing new projects or helping others. Please feel free to <a href="#" class="contactme">contact me</a>. 
 
 ## Geography
 
