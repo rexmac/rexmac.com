@@ -37,25 +37,29 @@ end
 
 task :default => :build
 
+desc "Clean out caches and public directory"
 task :clean do
-  print "Cleaning website..."
-  system "rm -rf ./_site"
-  puts "done."
+  message "Cleaning website...", false
+  #system "rm -rf ./_site"
+  rm_rf [dest_dir, ".pygments-cache/**", ".sass-cache/**", "#{js_cache_dir}/**"]
+  message "done".colorize(:green) + '.'
 end
 
+desc "Build website"
 task :build do
-  print "Building website..."
+  message "Building website..."
   Rake::Task["css"].invoke
   Rake::Task["js"].invoke
   if !which("jekyll")
-    puts "failed. - jekyll executable not found"
+    message "failed".colorize(:red) + ". - jekyll executable not found"
   else
     #system "jekyll" + ENV['JEKYLL_ENV'] !== 'development' ? " > /dev/null 2>&1"
     system "jekyll"
+    message "done".colorize(:green) + '.'
   end
-  puts "done."
 end
 
+desc "Create a new post; extra arguments will form the post's title"
 task :new do
   throw "No title given" unless ARGV[1]
   title = ""
@@ -80,18 +84,19 @@ task :new do
   exit
 end
 
+desc "Generate stylesheets; runs 'compass compile'"
 task :css do
-  print "Generating stylesheets..."
+  message "Generating stylesheets...", false
   if !which("compass")
-    puts "failed. - compass executable not found"
+    message "failed".colorize(:red) + ". - compass executable not found"
   else
     system "compass clean -q"
     system "compass compile -q"
-    puts "done."
+    message "done".colorize(:green) + '.'
   end
 end
 
-desc "Concatenates and minifies JS files according to 'js' setting in _config.yml"
+desc "Generate JavaScript; concatenates and minifies JS files according to 'js' setting in _config.yml"
 task :js do
   message "Generating javascript...", false
   begin
@@ -174,11 +179,11 @@ task :js do
   rescue RuntimeError => e
     message e.message
   else
-    message "done.".colorize(:green)
+    message "done".colorize(:green) + '.'
   end
-
 end
 
+desc "Deploy website to server"
 task :deploy do
   if ARGV[1] && ARGV[1] == 'test'
     rsync_params = "-n " + rsync_params
@@ -187,13 +192,16 @@ task :deploy do
   message "Deploying to remote server...", false
   begin
     if !which("rsync")
-      message "failed. - rsync executable not found".colorize(:red)
+      raise "rsync executable not found"
     elsif rsync_params.nil?
-      raise "failed. - no rsync settings found".colorize(:red)
+      raise "no rsync settings found"
     else
       system "rsync #{rsync_params}"
-      message "done".colorize(:green) + '.'
     end
+  rescue
+    message "failed".colorized(:red) + ". - #{e.message}"
+  else
+    message "done".colorize(:green) + '.'
   end
 
   exit
