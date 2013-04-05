@@ -1,7 +1,40 @@
-paginate: 10
+#-----------------------------#
+#     Major Site Settings     #
+#-----------------------------#
+url: http://rexmac.com
 title: rexmac.com
 description: "Rex McConnell's place on the world-wide-web, with tutorials, notes, and ramblings on computer programming, web development, and other topics"
-url: http://rexmac.com
+author:
+  name: Rex McConnell
+  github: rexmac
+  twitter: _rexmac
+analytics:
+  provider: google
+  google:
+    tracking_id: 'UA-26354182-1'
+
+#---------------------------------------#
+#             Blog Settings             #
+#---------------------------------------#
+paginate: 10                            # Posts per page on the blog index
+pagination_dir: blog                    # Directory base for pagination URLs, e.g., /blog/page/2/
+permalink: /blog/:title                 # URL structure for blog posts
+recent_posts: 5                         # Posts in the sidebar Recent Posts section
+excerpt_link: "Continue reading &rarr;" # "Continue reading" link text at the bottom of excerpted articles
+category_dir: blog/categories           # Directory base for category URLs, e.g., /blog/categories/
+tag_dir: blog/tags                      # Directory base for tag URLs, e.g., /blog/tags/
+
+#-----------------------------#
+#       Jekyll Settings       #
+#-----------------------------#
+source: src
+destination: public
+pygments: true
+markdown: kramdown
+
+#-----------------------------#
+#       Build Settings        #
+#-----------------------------#
 include: [".htaccess"]
 exclude: [
   "CNAME",
@@ -16,39 +49,21 @@ exclude: [
   "rexmac.com.sublime-workspace",
   "sass"
 ]
-source: src
-destination: public
-permalink: /blog/:title
-pygments: true
-markdown: kramdown
-category_dir: /blog/categories
-tag_dir: /blog/tags
-author:
-  name: Rex McConnell
-  github: rexmac
-  twitter: _rexmac
-
 js: [
   "site.min.js": [
-    "libs/sprintf.min.js",
-    "libs/bootstrap-transition.js",
-    "libs/bootstrap-collapse.js",
-    "libs/bootstrap-tooltip.js",
-    "libs/imageFlip.js",
-    "libs/jquery.cookie.js",
-    "libs/jquery.fcbkcomplete.js",
-    "libs/jquery.notifier.js",
-    "libs/jquery.showLoading.js",
-    "libs/jquery.treemap.js",
-    "libs/jquery.validate.js",
-    "libs/fayer.js",
-    "_rexmac.js"
+    "js/libs/sprintf.min.js",
+    "js/libs/bootstrap-transition.js",
+    "js/libs/bootstrap-collapse.js",
+    "js/libs/bootstrap-tooltip.js",
+    "js/libs/imageFlip.js",
+    "js/libs/jquery.cookie.js",
+    "js/libs/jquery.fcbkcomplete.js",
+    "js/libs/jquery.notifier.js",
+    "js/libs/jquery.showLoading.js",
+    "js/libs/jquery.treemap.js",
+    "js/libs/jquery.validate.js",
+    "js/libs/fayer.js",
+    "js/_rexmac.js"
   ]
 ]
-
-analytics:
-  provider: google
-  google:
-    tracking_id: 'UA-26354182-1'
-
 rsync_params: "-cvzr --delete _site/ rexmac@rexmac.com:~/public_html/"
