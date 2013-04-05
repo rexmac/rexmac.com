@@ -66,4 +66,3 @@ js: [
     "js/_rexmac.js"
   ]
 ]
-rsync_params: "-cvzr --delete _site/ rexmac@rexmac.com:~/public_html/"

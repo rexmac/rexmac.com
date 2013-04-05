@@ -10,6 +10,7 @@ CONFIG = YAML.load_file("_config.yml")
 $dest_dir   = CONFIG['destination'] || '_site'
 $src_dir = CONFIG['source'] || '.'
 $js_cache_dir = ".js-cache"
+rsync_params = "-cvzr --delete #{$dest_dir}/ rexmac@rexmac.com:~/public_html/"
 
 def message(msg, nl = true)
   print msg + (nl ? "\n" : "") unless Rake.verbose == false || Rake.application.options.silent == true
@@ -178,15 +179,21 @@ task :js do
 end
 
 task :deploy do
-  print "Deploying to remote server..."
-  if !which("rsync")
-    puts "failed. - rsync executable not found"
-  #elsif CONFIG['rsync_params'] == "nil"
-  elsif CONFIG['rsync_params'].nil?
-    puts "failed. - no rsync settings found"
-  else
-    system "rsync #{CONFIG['rsync_params']}"
-    puts "done."
+  if ARGV[1] && ARGV[1] == 'test'
+    rsync_params = "-n " + rsync_params
   end
-end
 
+  message "Deploying to remote server...", false
+  begin
+    if !which("rsync")
+      message "failed. - rsync executable not found".colorize(:red)
+    elsif rsync_params.nil?
+      raise "failed. - no rsync settings found".colorize(:red)
+    else
+      system "rsync #{rsync_params}"
+      message "done".colorize(:green) + '.'
+    end
+  end
+
+  exit
+end
