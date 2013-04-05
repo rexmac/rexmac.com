@@ -190,20 +190,3 @@ task :deploy do
   end
 end
 
-#task :less do
-#  lessc_path = '~/.npm/less/1.3.0/package/bin/lessc'
-#  less_path = 'css/less/site.less'
-#  css_path = '_site/css/style.css'
-#  command = [lessc_path,
-#             '-x',
-#             less_path,
-#             css_path
-#             ].join(' ')
-#
-#  #puts 'CSS DIR: ' + File.dirname(css_path)
-#  FileUtils.mkdir_p(File.dirname(css_path))
-#
-#  puts 'Compiling LESS: ' + command
-#  `#{command}`
-#  raise "LESS compilation error" if $?.to_i != 0
-#end
