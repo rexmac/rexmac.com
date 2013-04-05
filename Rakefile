@@ -7,10 +7,10 @@ require 'fileutils'
 ENV['JEKYLL_ENV'] = ENV['JEKYLL_ENV'] ? ENV['JEKYLL_ENV'] : "production"
 CONFIG = YAML.load_file("_config.yml")
 
-$dest_dir   = CONFIG['destination'] || '_site'
-$src_dir = CONFIG['source'] || '.'
-$js_cache_dir = ".js-cache"
-rsync_params = "-cvzr --delete #{$dest_dir}/ rexmac@rexmac.com:~/public_html/"
+dest_dir   = CONFIG['destination'] || '_site'
+src_dir = CONFIG['source'] || '.'
+js_cache_dir = ".js-cache"
+rsync_params = "-cvzr --delete #{dest_dir}/ rexmac@rexmac.com:~/public_html/"
 
 def message(msg, nl = true)
   print msg + (nl ? "\n" : "") unless Rake.verbose == false || Rake.application.options.silent == true
@@ -96,8 +96,8 @@ task :js do
   message "Generating javascript...", false
   begin
     # Create js_cache_dir if it doesn't exist
-    unless File.directory?($js_cache_dir)
-      FileUtils.mkdir_p($js_cache_dir)
+    unless File.directory?(js_cache_dir)
+      FileUtils.mkdir_p(js_cache_dir)
     end
 
     run_closure = false
@@ -108,7 +108,7 @@ task :js do
       vmessage "Read config: ".colorize(:green) + config.to_s, true
       config.each {|files|
         files.each {|output_file, input_files|
-          output_file = File.join($dest_dir, "js", output_file)
+          output_file = File.join(dest_dir, "js", output_file)
           dir = File.dirname(output_file)
           unless File.directory?(dir)
             FileUtils.mkdir_p(dir)
@@ -119,7 +119,7 @@ task :js do
           content = ''
 
           input_files.each {|file|
-            file = File.join($src_dir, "js", file)
+            file = File.join(src_dir, "js", file)
             processed.push(file)
             vmessage "  Input file: ".colorize(:cyan) + file
             unless File.readable?(file)
@@ -132,7 +132,7 @@ task :js do
 
           hash = Digest::SHA256.hexdigest(content)
           vmessage "  Hash: ".colorize(:cyan) + hash
-          cache_file = File.join($js_cache_dir, hash + ".js")
+          cache_file = File.join(js_cache_dir, hash + ".js")
 
           # Is there a cached version of the file?
           if File.readable?(cache_file)
@@ -162,12 +162,12 @@ task :js do
     end
 
     # Minfiy all JS files with names beginning with an underscore character
-    a = Dir.glob(File.join($src_dir, 'js', '**/_*.js')).select {|f|
+    a = Dir.glob(File.join(src_dir, 'js', '**/_*.js')).select {|f|
       processed.index(f).nil?
     }
     a.each {|f|
       content = Closure::Compiler.new.compile(File.read(f))
-      File.open(File.join($dest_dir, 'js', File.basename(f, '.js').gsub(/^_/, '') + '.min.js'), 'w') {|f|
+      File.open(File.join(dest_dir, 'js', File.basename(f, '.js').gsub(/^_/, '') + '.min.js'), 'w') {|f|
         f.write(content)
       }
     }
