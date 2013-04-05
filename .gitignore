@@ -1,9 +1,9 @@
 .DS_STORE
 .pygments-cache
 .sass-cache
-_site
 *.sublime-*
 Gemfile.lock
-/css
-/js/mturk.min.js
-/js/site.min.js
+/src/css
+/src/js/mturk.min.js
+/src/js/site.min.js
+/public

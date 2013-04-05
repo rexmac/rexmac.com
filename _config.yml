@@ -16,6 +16,8 @@ exclude: [
   "rexmac.com.sublime-workspace",
   "sass"
 ]
+source: src
+destination: public
 permalink: /blog/:title
 pygments: true
 markdown: kramdown
