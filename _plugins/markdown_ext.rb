@@ -1,11 +1,9 @@
 # Extension of Jekyll markdown converter.
 #
 # Add support for the following:
-#   - the contents of nested div elements with markdown="1" attribute are markdownified
 #   - replace known abbreviations (defined in _abbreviations.yml) with abbr elements
 #   - replace 'gist #n' with link to gist (from https://github.com/BlackBulletIV/blackbulletiv.github.com/blob/master/_plugins/markdown_ext.rb)
 #
-require 'nokogiri'
 
 module Jekyll
   class MarkdownConverter
