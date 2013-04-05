@@ -173,9 +173,10 @@ task :js do
     }
   rescue RuntimeError => e
     message e.message
+  else
+    message "done.".colorize(:green)
   end
 
-  message "done.".colorize(:green)
 end
 
 task :deploy do
