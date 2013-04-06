@@ -53,9 +53,9 @@ task :default => :build
 
 desc "Clean out caches and public directory"
 task :clean do
-  message "Cleaning website...", false
-  #system "rm -rf ./_site"
-  rm_rf [dest_dir, ".pygments-cache/**", ".sass-cache/**", "#{js_cache_dir}/**"]
+  message "Cleaning caches and public directory...", false
+  #rm_rf ["#{dest_dir}/**", ".pygments-cache/**", ".sass-cache/**", "#{js_cache_dir}/**"]
+  rm_rf [Dir.glob("#{dest_dir}/*"), Dir.glob(".pygments-cache/*"), Dir.glob(".sass-cache/*"), Dir.glob("#{js_cache_dir}/*")], {:verbose => Rake.verbose == true}
   message "done".colorize(:green) + '.'
 end
 
