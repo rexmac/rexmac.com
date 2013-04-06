@@ -12,6 +12,20 @@ src_dir = CONFIG['source'] || '.'
 js_cache_dir = ".js-cache"
 rsync_params = "-cvzr --delete #{dest_dir}/ rexmac@rexmac.com:~/public_html/"
 
+def get_stdin(message)
+  print message
+  STDIN.gets.chomp
+end
+
+def ask(message, valid_options)
+  if valid_options
+    answer = get_stdin("#{message} #{valid_options.to_s.gsub(/"/, '').gsub(/, /,'/')} ") while !valid_options.include?(answer)
+  else
+    answer = get_stdin(message)
+  end
+  answer
+end
+
 def message(msg, nl = true)
   print msg + (nl ? "\n" : "") unless Rake.verbose == false || Rake.application.options.silent == true
 end
@@ -66,7 +80,10 @@ task :new do
   ARGV[1..ARGV.length - 1].each { |v| title += " #{v}" }
   title.strip!
   now = Time.now
-  path = "_posts/#{now.strftime('%F')}-#{title.downcase.gsub(/[\s\.]/, '-').gsub(/[^\w\d\-]/, '')}.md"
+  path = "#{src_dir}/_posts/#{now.strftime('%F')}-#{title.downcase.gsub(/[\s\.]/, '-').gsub(/[^\w\d\-]/, '')}.md"
+  if File.exist?(filename)
+    abort("rake aborted!") if ask("#{path} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
+  end
 
   File.open(path, "w") do |f|
     f.puts "---"
