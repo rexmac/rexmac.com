@@ -51,18 +51,18 @@ exclude: [
 ]
 js: [
   "site.min.js": [
-    "js/libs/sprintf.min.js",
-    "js/libs/bootstrap-transition.js",
-    "js/libs/bootstrap-collapse.js",
-    "js/libs/bootstrap-tooltip.js",
-    "js/libs/imageFlip.js",
-    "js/libs/jquery.cookie.js",
-    "js/libs/jquery.fcbkcomplete.js",
-    "js/libs/jquery.notifier.js",
-    "js/libs/jquery.showLoading.js",
-    "js/libs/jquery.treemap.js",
-    "js/libs/jquery.validate.js",
-    "js/libs/fayer.js",
-    "js/_rexmac.js"
+    "libs/sprintf.min.js",
+    "libs/bootstrap-transition.js",
+    "libs/bootstrap-collapse.js",
+    "libs/bootstrap-tooltip.js",
+    "libs/imageFlip.js",
+    "libs/jquery.cookie.js",
+    "libs/jquery.fcbkcomplete.js",
+    "libs/jquery.notifier.js",
+    "libs/jquery.showLoading.js",
+    "libs/jquery.treemap.js",
+    "libs/jquery.validate.js",
+    "libs/fayer.js",
+    "_rexmac.js"
   ]
 ]
