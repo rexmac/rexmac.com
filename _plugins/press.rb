@@ -3,7 +3,7 @@
 # Original: https://github.com/stereobooster/jekyll_press/
 #
 require 'closure-compiler'
-require 'less'
+require 'sass'
 
 module Jekyll
   module Compressor
@@ -26,7 +26,8 @@ module Jekyll
 
     def output_css(path, content)
       print "Attempting to minify #{path}..."
-      self.output_file(path, Less::Parser.new.parse(content).to_css(:compress => true))
+      #self.output_file(path, Less::Parser.new.parse(content).to_css(:compress => true))
+      self.output_file(path, Sass::Engine.new(content, :syntax => :scss, :style => :compressed).render)
       puts "done."
     rescue Exception => e
       puts "failed. - error occurred: #{e.message.strip}"
