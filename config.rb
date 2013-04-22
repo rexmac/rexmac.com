@@ -2,7 +2,8 @@
 
 # Publishing paths
 http_path = "/"
-css_dir = "public/css"
+css_dir = "src/css"
+http_images_path = "/img"
 
 # Development paths
 sass_dir = "src/sass"
