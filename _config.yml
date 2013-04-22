@@ -37,16 +37,7 @@ markdown: kramdown
 #-----------------------------#
 include: [".htaccess"]
 exclude: [
-  "CNAME",
-  "config.rb",
-  "Gemfile",
-  "Gemfile.lock",
-  "Guardfile",
-  "Rakefile",
-  "README.md",
   "resolutionizr.html",
-  "rexmac.com.sublime-project",
-  "rexmac.com.sublime-workspace",
   "sass"
 ]
 js: [
