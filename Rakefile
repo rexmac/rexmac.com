@@ -203,8 +203,8 @@ task :js do
       copy_file_with_path(cached_file, output_file)
     }
 
-    # Copy anr remaining JS files that were not processed above
-    a = Dir.glob(File.join(src_dir, '_js', '**/*.js')).select {|file|
+    # Copy any remaining JS files that were not processed above
+    a = Dir.glob(File.join(src_dir, '_js', '**/*.*')).select {|file|
       processed.index(file).nil?
     }
     a.each {|file|
