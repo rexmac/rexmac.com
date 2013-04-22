@@ -15,7 +15,7 @@ module Jekyll
     end
 
     def output_html(path, content)
-      puts "Pressing HTML: " + path
+      #puts "Pressing HTML: " + path
       content = open('|/usr/bin/perl _plugins/press.pl', 'r+') do |io|
         io.write(content)
         io.close_write
@@ -78,25 +78,25 @@ module Jekyll
       return false if File.exist?(dest_path) and !self.modified?
       @@mtimes[path] = mtime
 
-      case File.extname(dest_path)
-      when '.js'
-        puts "JS: " + path + " " + dest_path
-        if dest_path =~ /.min.js$/
-          copy_file(path, dest_path)
-        else
-          self.output_js(dest_path, File.read(path))
-        end
-      when '.css'
-        puts "CSS: " + path + " " + dest_path
-        if dest_path =~ /.min.css$/
-          copy_file(path, dest_path)
-        else
-          self.output_css(dest_path, File.read(path))
-        end
-      else
-        puts "Other: " + path + " " + dest_path
+      #case File.extname(dest_path)
+      #when '.js'
+      #  puts "JS: " + path + " " + dest_path
+      #  if dest_path =~ /.min.js$/
+      #    copy_file(path, dest_path)
+      #  else
+      #    self.output_js(dest_path, File.read(path))
+      #  end
+      #when '.css'
+      #  puts "CSS: " + path + " " + dest_path
+      #  if dest_path =~ /.min.css$/
+      #    copy_file(path, dest_path)
+      #  else
+      #    self.output_css(dest_path, File.read(path))
+      #  end
+      #else
+        #puts "Other: " + path + " " + dest_path
         copy_file(path, dest_path)
-      end
+      #end
 
       true
     end

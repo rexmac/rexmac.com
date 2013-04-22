@@ -12,11 +12,6 @@ src_dir = CONFIG['source'] || '.'
 js_cache_dir = ".js-cache"
 rsync_params = "-cvzr --delete #{dest_dir}/ rexmac@rexmac.com:~/public_html/"
 
-def get_stdin(message)
-  print message
-  STDIN.gets.chomp
-end
-
 def ask(message, valid_options)
   if valid_options
     answer = get_stdin("#{message} #{valid_options.to_s.gsub(/"/, '').gsub(/, /,'/')} ") while !valid_options.include?(answer)
@@ -24,6 +19,44 @@ def ask(message, valid_options)
     answer = get_stdin(message)
   end
   answer
+end
+
+def cache_js(content, cache_dir)
+  hash = Digest::SHA256.hexdigest(content)
+  vmessage "  Hash: ".colorize(:cyan) + hash
+  cache_file = File.join(cache_dir, hash + ".js")
+
+  # Is there a cached version of the file?
+  if File.readable?(cache_file)
+    vmessage "  Cached file exists".colorize(:cyan)
+  else
+    vmessage "  Cached file does NOT exist; creating now...".colorize(:cyan)
+    # Run content through Google Closure Compiler and cache results
+    begin
+      content = Closure::Compiler.new.compile(content)
+    rescue Closure::Error => e
+      message "  Failed to minimize JS file, #{output_file}:".colorize(:red)
+      message "    " + e.message.gsub(/\n/, "\n  ")
+      raise e
+    else
+      File.open(cache_file, 'w') do |f|
+        f.write(content)
+      end
+      vmessage "  File cached as ".colorize(:cyan) + cache_file
+    end
+  end
+
+  cache_file
+end
+
+def copy_file_with_path(src, dest)
+  FileUtils.mkdir_p(File.dirname(dest)) unless File.directory?(File.dirname(dest))
+  FileUtils.cp(src, dest)
+end
+
+def get_stdin(message)
+  print message
+  STDIN.gets.chomp
 end
 
 def message(msg, nl = true)
@@ -118,9 +151,7 @@ task :js do
   message "Generating javascript...", false
   begin
     # Create js_cache_dir if it doesn't exist
-    unless File.directory?(js_cache_dir)
-      FileUtils.mkdir_p(js_cache_dir)
-    end
+    FileUtils.mkdir_p(js_cache_dir) unless File.directory?(js_cache_dir)
 
     run_closure = false
     processed = Array.new
@@ -130,18 +161,14 @@ task :js do
       vmessage "Read config: ".colorize(:green) + config.to_s, true
       config.each {|files|
         files.each {|output_file, input_files|
-          output_file = File.join(dest_dir, "js", output_file)
-          dir = File.dirname(output_file)
-          unless File.directory?(dir)
-            FileUtils.mkdir_p(dir)
-          end
+          output_file = File.join(src_dir, "js", output_file)
 
           vmessage "Output file: ".colorize(:cyan) + output_file.to_s
-          #vmessage "  Input files: ".colorize(:cyan) + input_files.to_s
-          content = ''
 
+          # Concatenate input files
+          content = ''
           input_files.each {|file|
-            file = File.join(src_dir, "js", file)
+            file = File.join(src_dir, "_js", file)
             processed.push(file)
             vmessage "  Input file: ".colorize(:cyan) + file
             unless File.readable?(file)
@@ -152,46 +179,39 @@ task :js do
             content.concat(File.read(file))
           }
 
-          hash = Digest::SHA256.hexdigest(content)
-          vmessage "  Hash: ".colorize(:cyan) + hash
-          cache_file = File.join(js_cache_dir, hash + ".js")
+          # Cache concatenated JS
+          cached_file = cache_js(content, js_cache_dir)
 
-          # Is there a cached version of the file?
-          if File.readable?(cache_file)
-            vmessage "  Cached file does exist".colorize(:cyan)
-          else
-            vmessage "  Cached file does NOT exist".colorize(:cyan)
-            # Run content through Google Closure Compiler and cache results
-            begin
-              content = Closure::Compiler.new.compile(content)
-            rescue Closure::Error => e
-              message "Failed to minimize JS file, #{output_file}:".colorize(:red)
-              message "  " + e.message.gsub(/\n/, "\n  ")
-            else
-              File.open(cache_file, 'w') do |f|
-                f.write(content)
-              end
-              vmessage "  File cached as ".colorize(:cyan) + cache_file
-            end
-          end
-
-          # Copy cached version of file to destination directory
-          FileUtils.cp(cache_file, output_file)
+          # Copy cached file to destination directory
+          copy_file_with_path(cached_file, output_file)
         }
       }
     else
       raise "No config found!".colorize(:red)
     end
 
-    # Minfiy all JS files with names beginning with an underscore character
-    a = Dir.glob(File.join(src_dir, 'js', '**/_*.js')).select {|f|
-      processed.index(f).nil?
+    # Minfiy all JS files with names beginning with an underscore character that were not processed above
+    a = Dir.glob(File.join(src_dir, '_js', '**/_*.js')).select {|file|
+      processed.index(file).nil?
     }
-    a.each {|f|
-      content = Closure::Compiler.new.compile(File.read(f))
-      File.open(File.join(dest_dir, 'js', File.basename(f, '.js').gsub(/^_/, '') + '.min.js'), 'w') {|f|
-        f.write(content)
-      }
+    a.each {|file|
+      vmessage "Minifying file: ".colorize(:cyan) + file
+      processed.push(file)
+      cached_file = cache_js(File.read(file), js_cache_dir)
+      output_file = File.join(src_dir, 'js', File.basename(file, '.js').gsub(/^_/, '') + '.min.js')
+      vmessage "  Writing minified file to: ".colorize(:cyan) + output_file
+      copy_file_with_path(cached_file, output_file)
+    }
+
+    # Copy anr remaining JS files that were not processed above
+    a = Dir.glob(File.join(src_dir, '_js', '**/*.js')).select {|file|
+      processed.index(file).nil?
+    }
+    a.each {|file|
+      vmessage "Copying file: ".colorize(:cyan) + file
+      output_file = File.join(File.dirname(file).gsub(/^#{File.join(src_dir, '_js')}/, File.join(src_dir, 'js')), File.basename(file))
+      vmessage "  To: ".colorize(:cyan) + output_file
+      copy_file_with_path(file, output_file)
     }
   rescue RuntimeError => e
     message e.message
