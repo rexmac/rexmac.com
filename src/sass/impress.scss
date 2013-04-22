@@ -54,7 +54,7 @@ a {
   @include transition(opacity 1s, transform 0.5s 1s);
 
   .impress-enabled & { display: block; }
-  .impress-on-bored & {
+  .impress-on-hello & {
       opacity: 1;
       @include transform(translateY(0px));
       @include transition(opacity 1s 5s, transform 0.5s 4.5s);
