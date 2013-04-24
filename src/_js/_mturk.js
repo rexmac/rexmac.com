@@ -1,6 +1,6 @@
 $(function() {
 
-  // Empty input elements appear 1 piel higher than they should when using Bootstrap 2
+  // Empty input elements appear 1 pixel higher than they should when using Bootstrap 2
   // May be limited to form-horizontal
   //$('input:text').val('0');
   //window.setTimeout(function() { $('input:text').val(''); }, 2050);
