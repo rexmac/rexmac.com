@@ -13,3 +13,18 @@
 .icon-browser-ie { background-position: -70px 0; }
 .icon-browser-opera { background-position: -36px 0; }
 .icon-browser-safari { background-position: -53px 0; }
+
+/* =============================================================================
+   Browser compatibility table
+   ========================================================================== */
+table.browser-compatibility {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1em;
+
+  td { border: 1px solid #ccc; }
+  .icon-browser { vertical-align: middle; }
+  .fail { color: red; }
+  .pass { color: green; }
+}
+
