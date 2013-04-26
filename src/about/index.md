@@ -19,10 +19,6 @@ I am currently looking for _remote_, full-time or contract work. If you know of 
 
 When I'm not coding (which is rare), I enjoy cooking, gaming, brewing beer, and travelling.
 
-## Geography
-
-I am originally from [Dallas, TX](http://en.wikipedia.org/wiki/Dallas), but I currently reside in [Münster, Germany](http://en.wikipedia.org/wiki/Münster) with my wife, our cat, and _her_ dog. I also spent several years in [Austin, TX](http://en.wikipedia.org/wiki/Austin,_Texas) and [San Jose, CA](http://en.wikipedia.org/wiki/San_Jose,_California), and I had a brief stint in [York, UK](http://en.wikipedia.org/wiki/York).
-
 ## Skills
 
 I am a polyglot, full-stack programmer. For the last several years, I have been developing efficient, scalable web apps with a focus on UX, a11y, and handsome UIs.
@@ -69,6 +65,7 @@ I have experience in the installation, configuration, and usage of all versions 
 * [last.fm](http://last.fm/user/rexmac82)
 * [Spotify](http://open.spotify.com/user/_rexmac)
 * [StackOverflow](http://stackoverflow.com/users/624093/rexmac)
+* [StackOverflow Careers profile](http://careers.stackoverflow.com/rexmac)
 * [Steam](http://steamcommunity.com/id/rexmac82)
 * [Subsonic server](#){:.strikethrough} Currently down until I find a new home for my server.
 * [Twitter](http://twitter.com/_rexmac)
