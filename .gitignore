@@ -5,6 +5,5 @@
 *.sublime-*
 Gemfile.lock
 /src/css
-/src/js/mturk.min.js
-/src/js/site.min.js
+/src/js
 /public
