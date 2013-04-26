@@ -26,8 +26,10 @@
       //console.log(s, el.css(s));
       d.css(s, el.css(s));
     });
-    h = d.outerHeight();
-    w = d.outerWidth();
+    //h = d.outerHeight();
+    //w = d.outerWidth();
+    h = d.height();
+    w = d.width();
     d.remove();
     return { height: h, width: w };
   };
