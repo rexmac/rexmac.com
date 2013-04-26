@@ -1,4 +1,4 @@
-# Jekyll pluginf or embedding Youtube videos
+# Jekyll plugin for embedding Youtube videos
 #
 # Original: https://github.com/BlackBulletIV/blackbulletiv.github.com/blob/master/_plugins/youtube.rb
 #
