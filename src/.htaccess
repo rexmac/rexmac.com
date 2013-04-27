@@ -198,8 +198,8 @@ RewriteCond %{HTTP_HOST} !^(dev\.)?rexmac\.com(:80)?$ [NC]
 RewriteRule ^(.*)$ http://rexmac.com/$1 [QSA,L]
 
 # Rewrite project shortcuts
-RewriteRule ^jquery/(.*)$ projects/jquery/$1 [QSA,L]
-RewriteRule ^mturk/(.*)$ projects/mturk/$1 [QSA,L]
+RewriteRule ^jquery(/.*)*$ projects/jquery/$1 [QSA,L]
+RewriteRule ^mturk(/.*)*$ projects/mturk/$1 [QSA,L]
 
 # Cache-busting URLs
 RewriteCond %{REQUEST_FILENAME} !-f
