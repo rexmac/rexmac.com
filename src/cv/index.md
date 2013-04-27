@@ -1,7 +1,7 @@
 ---
 layout: impress
 title: "CV"
-credits: 'Copyright © 2013 <a href="rexmac.com/">Rex McConnell</a>. Made with <a href="https://github.com/bartaz/impress.js">Impress.js</a> and <a href="http://fortawesome.github.com/Font-Awesome/">FontAwesome</a>.'
+credits: 'Copyright © 2013 <a href="http://rexmac.com/">Rex McConnell</a>. Made with <a href="https://github.com/bartaz/impress.js">Impress.js</a> and <a href="http://fortawesome.github.com/Font-Awesome/">FontAwesome</a>.'
 css:
   - http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic|Rock+Salt
   - /css/cv.css
