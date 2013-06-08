@@ -2,6 +2,7 @@
 #     Major Site Settings     #
 #-----------------------------#
 url: http://rexmac.com
+domain: rexmac.com
 title: rexmac.com
 description: "Rex McConnell's place on the world-wide-web, with tutorials, notes, and ramblings on computer programming, web development, and other topics"
 author:
@@ -12,6 +13,10 @@ analytics:
   provider: google
   google:
     tracking_id: 'UA-26354182-1'
+rsync:
+  user: rexmac
+  host: rexmac.com
+  path: ~/public_html/
 
 #---------------------------------------#
 #             Blog Settings             #

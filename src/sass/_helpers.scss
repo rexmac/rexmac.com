@@ -6,8 +6,39 @@
 .align-content-right { text-align: right; }
 .auto-width { width: auto; }
 .centered { margin-left: auto; margin-right: auto; }
+img.alignleft {
+  float: left;
+  margin: 0 1em 1em 0;
+}
+img.alignright {
+  float: right;
+  margin: 0 0 1em 1em;
+}
+img.center { display: block; }
 .chromeframe { margin-bottom: 0; @include border-radius(0!important); }
 .no-bottom { margin-bottom: 0; }
 .no-top { margin-top: 0; }
 .strikethrough { text-decoration: line-through; }
 a.strikethrough { text-decoration: line-through!important; }
+.text-center { text-align: center; }
+.text-justify { text-align: justify; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.underline { border-bottom: 1px solid $gray; }
+.very-large-text {
+  font-size: 60px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  text-rendering: optimizelegibility;
+}
+.pageanchor,
+.readmore-anchor {
+  position: relative;
+  display: inline-block;
+  top: -40px;
+  width: 0;
+  height: 0;
+}
+.readmore-anchor {
+  top: -60px;
+}

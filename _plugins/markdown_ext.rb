@@ -17,9 +17,11 @@ module Jekyll
         puts "Loading abbreviations..."
         @@abbr_dict = YAML.load(File.open(File.join(@config['source'], "_abbreviations.yml")))
       end
-      @@abbr_dict.each do |abbr, title|
-        #content.gsub!(/\b#{abbr}\b(?![^">]+">|<\/abbr>|">)/, "<abbr title=\"#{title}\">#{abbr[/[A-Za-z0-9\.\s\;\&]+/]}</abbr>")
-        content.gsub!(/\b#{abbr}(s)?\b(?![^">]+">|<\/abbr>|">)/, "<abbr title=\"#{title}\">#{abbr}</abbr>\\1")
+      if @@abbr_dict != false
+        @@abbr_dict.each do |abbr, title|
+          #content.gsub!(/\b#{abbr}\b(?![^">]+">|<\/abbr>|">)/, "<abbr title=\"#{title}\">#{abbr[/[A-Za-z0-9\.\s\;\&]+/]}</abbr>")
+          content.gsub!(/\b#{abbr}(s)?\b(?![^">]+">|<\/abbr>|">)/, "<abbr title=\"#{title}\">#{abbr}</abbr>\\1")
+        end
       end
 
       # This adds the gist #1 syntax.

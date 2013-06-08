@@ -1,7 +1,7 @@
 <div id="sidebar" class="span4"><div class="sidebar-inner">
 
   <div class="sidebar-module profile-image">
-    <h3><i class="icon-user"></i><span>Rex McConnell</span></h3>
+    <h3><i class="icon-user"></i><span>{{ site.author.name }}</span></h3>
     <div class="profile-image-flip"><div>
       <div class="front face">
         <img src="/img/profile.pixel.png" />
@@ -14,10 +14,10 @@
 
   <div class="sidebar-module social-media-icons">
     <h3><i class="icon-road"></i><span>Follow Me</span></h3>
-    <a class="ir twitter" href="http://twitter.com/_rexmac" title="Follow me on Twitter">Follow me on Twitter</a>
+    <a class="ir twitter" href="http://twitter.com/{{ site.author.twitter }}" title="Follow me on Twitter">Follow me on Twitter</a>
     <a class="ir gplus" href="http://gplus.to/rexmac" title="Follow me on G+">Follow me on G+</a>
-    <a class="ir rss" href="http://rexmac.com/feed" title="nom nom?">RSS Feed</a>
-    <a class="ir github" href="http://github.com/rexmac" title="View my projects on Github">View my projects on Github</a>
+    <a class="ir rss" href="{{ site.url }}/feed" title="nom nom?">RSS Feed</a>
+    <a class="ir github" href="http://github.com/{{ site.author.github }}" title="View my projects on Github">View my projects on Github</a>
     <a class="ir stackoverflow" href="http://stackoverflow.com/users/624093/rexmac" title="View my StackOverflow profile">View my StackOverflow profile</a>
   </div>
 

@@ -54,13 +54,21 @@ footer {
   .lightsoff & a {
     @include opacity(.8);
   }
-}
-footer p {
-  font-size: 90%;
-  margin-bottom: 0;
-}
-footer html5-logo {
-  margin: 0.5em 0;
+
+  p {
+    font-size: 90%;
+    margin-bottom: 0;
+    text-align: left !important;
+  }
+
+  .html5-logo {
+    clear: both;
+    margin: 0.5em 0;
+  }
+
+  .container-fluid & {
+      margin-right: 2em;
+  }
 }
 
 hr {
@@ -72,13 +80,26 @@ hr {
   }
 }
 
-@import "posts";
 @import "accordions";
 @import "alerts";
 @import "buttons";
 @import "dictionary";
 @import "forms";
 @import "nav";
+@import "sidebar";
+@import "posts";
+@import "post-dates";
+@import "tagcloud";
+@import "profile-flip";
+@import "socialmedia-icons";
+@import "tooltips";
+@import "browser-icons";
+@import "binarylife";
+@import "glider-tag";
+
+@import "jquery/fcbkcomplete";
+@import "jquery/showloading";
+@import "jquery/treemap";
 
 /* =============================================================================
    Thumbnails
@@ -86,23 +107,6 @@ hr {
 img.thumbnail {
   .lightsoff & { border-color: $gray; }
 }
-
-@import "tooltips";
-@import "post-dates";
-@import "sidebar";
-@import "tagcloud";
-@import "binarylife";
-@import "browser-icons";
-@import "glider-tag";
-
-@import "jquery/fcbkcomplete";
-@import "jquery/showloading";
-@import "jquery/treemap";
-
-@import "profile-flip";
-
-@import "socialmedia-icons";
-
 
 /* =============================================================================
    non-semantic helper classes
