@@ -25,7 +25,7 @@
         <ul class="nav">
           <li><a href="{{ site.url }}/"><i class="icon-home"></i> Home</a></li>
           <li><a href="{{ site.url }}/about">About Me</a></li>
-          <li><a href="{{ site.url | replace: site.domain, 'blog.' + site.domain }}">Blog</a></li>
+          <li><a href="{{ site.url | replace:site.domain,'blog.' | append:site.domain }}">Blog</a></li>
           <li><a href="{{ site.url }}/projects">Projects</a></li>
           <li><a href="#" class="contactme">Contact</a></li>
         </ul>

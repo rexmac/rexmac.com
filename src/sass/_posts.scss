@@ -49,9 +49,7 @@
   @media (max-width: 480px) {
     padding: $baseLineHeight;
     margin-bottom: $baseLineHeight / 2;
-    h1 {
-      font-size: $baseFontSize * 2;
-    }
+    h1 { font-size: $baseFontSize * 2; }
     p {
       font-size: $baseFontSize;
       line-height: $baseLineHeight;

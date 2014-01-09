@@ -1,9 +1,8 @@
-.DS_STORE
+.DS_Store
 .js-cache
 .pygments-cache
 .sass-cache
 *.sublime-*
-Gemfile.lock
 /src/css
 /src/js
 /public
