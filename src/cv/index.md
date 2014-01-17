@@ -29,12 +29,12 @@ css:
 </div>
 
 <div class="step education" data-x="2000" data-y="200" data-rotate-x="90">
-  <span class="degree"><i class="icon-trophy"></i> B.S. in Computer Science</span>
-  <span class="school"><i class="icon-building"></i> University of Texas at Dallas</span>
-  <span class="dates"><i class="icon-time"></i> Graduated 2006</span>
-  <span class="tools"><i class="icon-wrench"></i> C++, Java</span>
+  <span class="degree"><i class="fa fa-trophy"></i> B.S. in Computer Science</span>
+  <span class="school"><i class="fa fa-building-o"></i> University of Texas at Dallas</span>
+  <span class="dates"><i class="fa fa-clock-o"></i> Graduated 2006</span>
+  <span class="tools"><i class="fa fa-wrench"></i> C++, Java</span>
   <hr />
-  <p markdown="1"><i class="icon-comment"></i> I received formal training in C++ and Java with a focus on object-oriented programming. I also studied: algorithms, automata, discrete mathematics, probability and statistics, operating systems, computer architecture, and database systems.</p>
+  <p markdown="1"><i class="fa fa-comment"></i> I received formal training in C++ and Java with a focus on object-oriented programming. I also studied: algorithms, automata, discrete mathematics, probability and statistics, operating systems, computer architecture, and database systems.</p>
 </div>
 
 <div class="step bio" data-x="2000" data-y="200" data-rotate-x="180">
@@ -44,22 +44,22 @@ css:
 </div>
 
 <div class="step job" data-x="700" data-y="1400">
-  <span class="title"><i class="icon-user"></i> Deployment Engineer</span>
-  <span class="company"><i class="icon-group"></i> WebJuice, LLC</span>
-  <span class="dates"><i class="icon-time"></i> Oct 2006 - Feb 2007</span>
-  <span class="tools"><i class="icon-wrench"></i> Perl</span>
+  <span class="title"><i class="fa fa-user"></i> Deployment Engineer</span>
+  <span class="company"><i class="fa fa-group"></i> WebJuice, LLC</span>
+  <span class="dates"><i class="fa fa-clock-o"></i> Oct 2006 - Feb 2007</span>
+  <span class="tools"><i class="fa fa-wrench"></i> Perl</span>
   <hr/>
-  <p markdown="1"><i class="icon-comment"></i> Not as exciting as it may sound. This position was primarily responsible for the deployment of email marketing campaigns, and there was no programming invovled at all -- but hey, I had a job at a startup in Silicon Valley!</p>
+  <p markdown="1"><i class="fa fa-comment"></i> Not as exciting as it may sound. This position was primarily responsible for the deployment of email marketing campaigns, and there was no programming invovled at all -- but hey, I had a job at a startup in Silicon Valley!</p>
   <p markdown="1">The work involved the use of a lot of Perl scripts, and I had access to several Linux machines, so in my spare time, I began hacking together some Perl scripts to help me and my fellow "engineers" with our work. The bosses noticed my hard work and passion for problem sovling and six months later I was a founding member of a new team at the company with the title of...</p>
 </div>
 
 <div class="step job" data-x="1300" data-y="800" data-rotate-z="-90">
-  <span class="title"><i class="icon-user"></i> R&D Engineer</span>
-  <span class="company"><i class="icon-group"></i> WebJuice, LLC</span>
-  <span class="dates"><i class="icon-time"></i> Feb 2007 - Aug 2010</span>
-  <span class="tools"><i class="icon-wrench"></i> Perl, PHP, MySQL, SQLite, Apache</span>
+  <span class="title"><i class="fa fa-user"></i> R&D Engineer</span>
+  <span class="company"><i class="fa fa-group"></i> WebJuice, LLC</span>
+  <span class="dates"><i class="fa fa-clock-o"></i> Feb 2007 - Aug 2010</span>
+  <span class="tools"><i class="fa fa-wrench"></i> Perl, PHP, MySQL, SQLite, Apache</span>
   <hr/>
-  <p markdown="1"><i class="icon-comment"></i> This position was 90% programming and much more exciting. I helped research and develop new methods and technologies to aid the business in their delivery of marketing emails. Very quickly, our team was able to dramatically increase the efficiency of and the revenue brought in by the mailing department. Near the end of my time with WebJuice, I was managing an entire library of Perl scripts and modules totalling just over 20k lines.</p>
+  <p markdown="1"><i class="fa fa-comment"></i> This position was 90% programming and much more exciting. I helped research and develop new methods and technologies to aid the business in their delivery of marketing emails. Very quickly, our team was able to dramatically increase the efficiency of and the revenue brought in by the mailing department. Near the end of my time with WebJuice, I was managing an entire library of Perl scripts and modules totalling just over 20k lines.</p>
 </div>
 
 <div class="step job inbetween" data-x="750" data-y="300" data-rotate-z="-180">
@@ -67,12 +67,12 @@ css:
 </div>
 
 <div class="step job" data-x="0" data-y="800" data-rotate-z="-270">
-  <span class="title"><i class="icon-user"></i> Senior Software Engineer</span>
-  <span class="company"><i class="icon-group"></i> VastPro Media, LLC</span>
-  <span class="dates"><i class="icon-time"></i> Aug 2010 - Mar 2013</span>
-  <span class="tools"><i class="icon-wrench"></i> PHP, MySQL, Zend Framework, Doctrine ORM, Apache, Redmine</span>
+  <span class="title"><i class="fa fa-user"></i> Senior Software Engineer</span>
+  <span class="company"><i class="fa fa-group"></i> VastPro Media, LLC</span>
+  <span class="dates"><i class="fa fa-clock-o"></i> Aug 2010 - Mar 2013</span>
+  <span class="tools"><i class="fa fa-wrench"></i> PHP, MySQL, Zend Framework, Doctrine ORM, Apache, Redmine</span>
   <hr/>
-  <p markdown="1"><i class="icon-comment"></i> This position involved the development and maintenance of an enterprise affiliate marketing application for use by online advertisers and affiliate marketers. The application was a marketplace of sorts that allowed affiliate marketers to gain access to online marketing campaigns uploaded by advertisers. The software was responsible for managing the campaigns' assets, providing reporting metrics on the campaigns' performance, and a host of administrative tools.</p>
+  <p markdown="1"><i class="fa fa-comment"></i> This position involved the development and maintenance of an enterprise affiliate marketing application for use by online advertisers and affiliate marketers. The application was a marketplace of sorts that allowed affiliate marketers to gain access to online marketing campaigns uploaded by advertisers. The software was responsible for managing the campaigns' assets, providing reporting metrics on the campaigns' performance, and a host of administrative tools.</p>
   <p markdown="1">While there were (two) brief stints of junior engineers working under me, I was largely a one-developer team. The software was quite successful, and it had grown considerably over the years. As of March 2013, I was managing just over 42k lines of code.</p>
   <p markdown="1">The last 15 months of this job were spent working remotely from York, England.</p>
 </div>
@@ -84,28 +84,28 @@ css:
 </div>
 
 <div class="step project" data-x="2800" data-y="700" data-rotate-z="90">
-  <span class="title"><i class="icon-edit"></i> jQuery Treemap</span>
-  <span class="link"><i class="icon-link"></i> <a href="http://rexmac.com/jquery/treemap/">rexmac.com/jquery/treemap</a></span>
-  <span class="tools"><i class="icon-wrench"></i> jQuery</span>
+  <span class="title"><i class="fa fa-edit"></i> jQuery Treemap</span>
+  <span class="link"><i class="fa fa-link"></i> <a href="http://rexmac.com/jquery/treemap/">rexmac.com/jquery/treemap</a></span>
+  <span class="tools"><i class="fa fa-wrench"></i> jQuery</span>
   <hr/>
-  <p markdown="1"><i class="icon-comment"></i> I was looking for a fun and colorful way to encapsulate my skills as a programmer while using very little screen real estate. I wanted to describe not just my skills, but also my level of proficiency. Paragraphs were far too verbose, and bulleted lists did not convey enough information. I began looking for a more visually entertaining approach. A bar chart would have worked, but I wanted to try something less common.</p>
+  <p markdown="1"><i class="fa fa-comment"></i> I was looking for a fun and colorful way to encapsulate my skills as a programmer while using very little screen real estate. I wanted to describe not just my skills, but also my level of proficiency. Paragraphs were far too verbose, and bulleted lists did not convey enough information. I began looking for a more visually entertaining approach. A bar chart would have worked, but I wanted to try something less common.</p>
   <p markdown="1">After doing a bit of brainstorming, I realized that a treemap might be the perfect solution. I wasn't happy with any of the existing implementations that I found, so I wrote this jQuery plugin to achieve the effect that I was after.</p>
 </div>
 
 <div class="step project" data-x="3350" data-y="1400">
-  <span class="title"><i class="icon-edit"></i> MTurk-Qualtrics Helper</span>
-  <span class="link"><i class="icon-link"></i> <a href="http://rexmac.com/mturk/">rexmac.com/mturk</a></span>
-  <span class="tools"><i class="icon-wrench"></i> jQuery, AWS, Qualtrics, Yahoo! Pipes</span>
+  <span class="title"><i class="fa fa-edit"></i> MTurk-Qualtrics Helper</span>
+  <span class="link"><i class="fa fa-link"></i> <a href="http://rexmac.com/mturk/">rexmac.com/mturk</a></span>
+  <span class="tools"><i class="fa fa-wrench"></i> jQuery, AWS, Qualtrics, Yahoo! Pipes</span>
   <hr/>
-  <p markdown="1"><i class="icon-comment"></i> As part of her work, my wife was using surveys created at Qualtrics.com to collect data from participants in a psychological study. She also wanted to use Amazon's Mechanical Turk service as a recruitment tool for the surveys. MTurk supports the integration of external resources, but, at least in this instance, the result was less than ideal. The biggest issue was that participants could click a button in the MTurk interface claiming that they had completed the survey when in fact they had not. My wife asked me to look into the issue and see if there was anything that could be done. This project was the result. Please refer to <a href="http://blog.rexmac.com/mturk-qualtrics-helper/">this blog post</a> for the full story.</p>
+  <p markdown="1"><i class="fa fa-comment"></i> As part of her work, my wife was using surveys created at Qualtrics.com to collect data from participants in a psychological study. She also wanted to use Amazon's Mechanical Turk service as a recruitment tool for the surveys. MTurk supports the integration of external resources, but, at least in this instance, the result was less than ideal. The biggest issue was that participants could click a button in the MTurk interface claiming that they had completed the survey when in fact they had not. My wife asked me to look into the issue and see if there was anything that could be done. This project was the result. Please refer to <a href="http://blog.rexmac.com/mturk-qualtrics-helper/">this blog post</a> for the full story.</p>
 </div>
 
 <div class="step project" data-x="4000" data-y="850" data-rotate-z="-90">
-  <span class="title"><i class="icon-edit"></i> OneClickClass</span>
-  <span class="link"><i class="icon-link"></i> <a href="http://oneclickclass.com/">oneclickclass.com</a></span>
-  <span class="tools"><i class="icon-wrench"></i> HTML5</span>
+  <span class="title"><i class="fa fa-edit"></i> OneClickClass</span>
+  <span class="link"><i class="fa fa-link"></i> <a href="http://oneclickclass.com/">oneclickclass.com</a></span>
+  <span class="tools"><i class="fa fa-wrench"></i> HTML5</span>
   <hr/>
-  <p markdown="1"><i class="icon-comment"></i> Sometimes, I just like goofing off, and this project is one example. A friend had sent me a few links, and prompted me to open them all at once to enjoy "instant class". I was quite pleased with the effect, but having to click **three** links was bit cumbersome. One-click/Single-button sites were becoming something of a meme at the time, so just for fun, I spent a few minutes putting this together.</p>
+  <p markdown="1"><i class="fa fa-comment"></i> Sometimes, I just like goofing off, and this project is one example. A friend had sent me a few links, and prompted me to open them all at once to enjoy "instant class". I was quite pleased with the effect, but having to click **three** links was bit cumbersome. One-click/Single-button sites were becoming something of a meme at the time, so just for fun, I spent a few minutes putting this together.</p>
 </div>
 
 <div class="step project outro" data-x="3300" data-y="950" data-z="0" data-rotate-y="-270" data-rotate-z="-180">
@@ -115,10 +115,10 @@ css:
 <div id="contact" class="step" data-x="3300" data-y="650" data-z="0" data-rotate-y="-90" data-rotate-z="-180">
   <p>Want to get in touch?<br/>Feel free to contact me!</p>
   <p>
-    <a href="mailto:rex@rexmac.com"><i class="icon-envelope"></i></a>
-    <a href="http://rexmac.com/"><i class="icon-home"></i></a>
-    <a href="https://github.com/rexmac"><i class="icon-github-alt"></i></a>
-    <a href="https://twitter.com/_rexmac"><i class="icon-twitter"></i></a>
+    <a href="mailto:rex@rexmac.com"><i class="fa fa-envelope"></i></a>
+    <a href="http://rexmac.com/"><i class="fa fa-home"></i></a>
+    <a href="https://github.com/rexmac"><i class="fa fa-github-alt"></i></a>
+    <a href="https://twitter.com/_rexmac"><i class="fa fa-twitter"></i></a>
   </p>
 </div>
 
