@@ -193,6 +193,7 @@ RewriteRule ^(.*)$ blog/$1 [QSA,L]
 
 # Redirect all sub-domains (except those handled above) to rexmac.com
 RewriteCond %{HTTP_HOST} !^(dev\.)?rexmac\.com(:80)?$ [NC]
+RewriteCond %{HTTP_HOST} !^rexmac\.dev(:80)?$ [NC]
 RewriteRule ^(.*)$ http://rexmac.com/$1 [QSA,L]
 
 # Rewrite project shortcuts
