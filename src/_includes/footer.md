@@ -14,4 +14,4 @@ This site is proudly hosted on [Site5](http://www.site5.com/in.php?id=23116) bec
 </div>
 </footer>
 
-<div id="glider-tag-container"><span id="glider-tag"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div>
+<a id="glider-tag-container" href="javascript:;" title="Pause life"><span id="glider-tag"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></a>
