@@ -43,7 +43,7 @@ markdown: kramdown
 include: [".htaccess"]
 exclude: [
   "resolutionizr.html",
-  "sass"
+  "scss"
 ]
 js: [
   "site.min.js": [
