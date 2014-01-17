@@ -1,0 +1,15 @@
+---
+layout: page
+---
+
+<section id="downloads" class="clearfix">
+  {% if page.pbw_url %}<a href="{{ page.pbw_url }}" class="button pbw">Download .pbw</a>{% endif %}
+  <a href="{{ page.zipball_url }}" class="button zip">Download .zip</a>
+  <a href="{{ page.tarball_url }}" class="button tar-gz">Download .tar.gz</a>
+  <a href="{{ page.repo_url }}" class="button github">View on GitHub</a>
+</section>
+
+<hr class="faded">
+
+{% if page.readme %}<section id="readme" class="clearfix">{{ page.readme }}</section>{% endif %}
+
