@@ -9,14 +9,14 @@ title: Projects
 
 * [Chatbot](http://chatbot.rexmac.com/)
   * Demonstration of a very rudimentary chatbot implemented using [Node.JS](http://nodejs.org/) and [Socket.IO](http://socket.io/).
-  
+
 #### <a id="jquery"></a>jQuery
 
 * [jQuery Collapsible Fieldset plugin](http://github.com/rexmac/jquery-collapsibleFieldset)
   * Small jQuery plugin for collapsing fieldsets by clicking their legends
 * [jQuery Treemap plugin](http://rexmac.com/jquery/treemap)
   * A (simple) jQuery plugin for generating treemaps with (optional) heatmap-style coloring
-  
+
 #### <a id="pebble"></a>Pebble Smartwatch
 
 * [ChronoCode](/chronocode)
