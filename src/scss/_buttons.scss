@@ -41,6 +41,9 @@
     @include gradient-vertical(#333333, #222222);
     @include box-shadow(0px 1px 5px invert(#e8e8e8));
 
+    &:visited {
+      color: #cfcfcf;
+    }
     &:hover {
       border-color: #444444 #2c2c2c #2c2c2c #2c2c2c;
       @include gradient-vertical(#444444, #333333);
