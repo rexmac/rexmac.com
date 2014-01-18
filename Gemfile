@@ -8,6 +8,7 @@ group :development do
   gem 'colorize', '~> 0.5'
   gem 'compass', '~> 0.12'
   gem 'growl', '~> 1.0'
+  gem 'fastimage', '~>1.5'
   gem 'jekyll', '~> 0.12'
   gem 'kramdown', '~> 1.0'
   gem 'less', '~> 2.3'
