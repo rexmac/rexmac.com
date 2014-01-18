@@ -13,7 +13,7 @@ module Jekyll
       puts "Building project page: #{name}"
 
       github_name = (category == 'pebble' ? 'pebble-' : '') + name
-      releases = JSON.parse(`curl -sS https://api.github.com/repos/#{site.config['author']['github']}/#{github_name}/releases`)
+      releases = JSON.parse(`curl -fsS https://api.github.com/repos/#{site.config['author']['github']}/#{github_name}/releases`)
       latest_release = ""
       latest_release_index = 0
       releases.each_with_index do |obj, i|
@@ -34,12 +34,32 @@ module Jekyll
         self.data['pbw_url'] = "#{self.data['repo_url']}/releases/download/#{self.data['version']}/#{latest_release['assets'][0]['name']}"
       end
 
-      # this stuff is bit hackish, but it works
-      readme = `curl -sS https://raw.github.com/#{site.config['author']['github']}/#{github_name}/#{latest_release['name']}/README.md`
+      # Get project README from GitHub
+      #readme = `curl -fsS https://raw.github.com/#{site.config['author']['github']}/#{github_name}/#{latest_release['name']}/README.md 2>&1`
+      readme = `curl -fsS https://raw.github.com/#{site.config['author']['github']}/#{github_name}/master/README.md 2>&1`
+      if readme.match(/^curl: /)
+        throw "Error parsing README.md from GitHub: #{readme}"
+      end
+
+      # Parse desrciption
+      matches = readme.match(/^## Description\s+^(.+?)^#+/m)
+      if !matches.nil? && matches.length > 1
+        self.data['description'] = matches[1].tap &:strip!
+      end
+
+      # Perform some string replacements in prep for Liquid parsing
       readme.gsub!(/\`{3} ?(\w+)\n(.+?)\n\`{3}/m, "{% highlight \\1 %}\n\\2\n{% endhighlight %}")
       #readme.gsub!(/Ö/, '&#214;')
+
+      # Run README through Liquid parser
       readme = Liquid::Template.parse(readme).render({}, :filters => [Jekyll::Filters], :registers => { :site => site })
       self.data['readme'] = Kramdown::Document.new(readme).to_html
+
+      # Try to find an image to use as an OpenGraph thubmnail
+      matches = self.data['readme'].match(/<img[^>]+src="(https?:\/\/[^"]+)"/)
+      if !matches.nil? && matches.length > 1
+        self.data['image'] = matches[1]
+      end
     end
   end
 
