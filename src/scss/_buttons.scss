@@ -32,6 +32,20 @@
     border-color: #b7b7b7 #b3b3b3 #b3b3b3 #b3b3b3;
     @include gradient-vertical(#fdfdfd, #f6f6f6);
   }
+
+  .lightsoff & {
+    color: #cfcfcf;
+    border: 1px solid #303030;
+    border-top-color: #444444;
+    border-bottom-color: #2c2c2c;
+    @include gradient-vertical(#333333, #222222);
+    @include box-shadow(0px 1px 5px invert(#e8e8e8));
+
+    &:hover {
+      border-color: #444444 #2c2c2c #2c2c2c #2c2c2c;
+      @include gradient-vertical(#444444, #333333);
+    }
+  }
 }
 .button {
   @include button;
