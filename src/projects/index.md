@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Projects
+description: Software and hardware projects of Rex McConnell
 ---
 
 ## <a id="digital"></a><a id="software"></a>Software
