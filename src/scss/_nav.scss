@@ -9,7 +9,11 @@
   }
   .nav > li > a {
     @include opacity(.75);
-    > i { @include opacity(.50); }
+    @include transition(opacity 0.6s ease);
+    > i {
+      @include opacity(.5);
+      @include transition(opacity 0.6s ease);
+    }
   }
 }
 .navbar-inverse {
@@ -28,8 +32,7 @@
    Light switch
    ========================================================================== */
 #light-switch {
-  @include opacity(.5);
+  margin-left: 4em;
 }
 #light-switch:hover {
-  @include opacity(1);
 }
