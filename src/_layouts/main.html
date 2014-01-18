@@ -10,6 +10,7 @@
   <meta name="author" content="{{ site.author.name }}" />
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
   <meta name="viewport" content="width=device-width" />
+  {% include opengraph.html %}
   <link rel="stylesheet" href="{{ '/css/site.css' | cachebust_url }}" />
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
 </head>
