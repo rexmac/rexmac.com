@@ -1,28 +1,7 @@
 <div id="sidebar" class="span4"><div class="sidebar-inner">
 
-  <div class="sidebar-module profile-image">
-    <h3><i class="fa fa-user"></i><span>{{ site.author.name }}</span></h3>
-    <div class="profile-image-flip"><div>
-      <div class="front face">
-        <img src="/img/profile.pixel.png" />
-      </div>
-      <div class="back face">
-        <img src="/img/profile.photo.jpg" />
-      </div>
-    </div></div>
-  </div>
-
-  <div class="sidebar-module social-media-icons">
-    <h3><i class="fa fa-road"></i><span>Follow Me</span></h3>
-    <a class="ir twitter" href="http://twitter.com/{{ site.author.twitter }}" title="Follow me on Twitter">Follow me on Twitter</a>
-    <a class="ir gplus" href="http://gplus.to/rexmac" title="Follow me on G+">Follow me on G+</a>
-    <a class="ir rss" href="{{ site.url }}/feed" title="nom nom?">RSS Feed</a>
-    <a class="ir github" href="http://github.com/{{ site.author.github }}" title="View my projects on Github">View my projects on Github</a>
-    <a class="ir stackoverflow" href="http://stackoverflow.com/users/624093/rexmac" title="View my StackOverflow profile">View my StackOverflow profile</a>
-  </div>
-
   <div class="sidebar-module latest-posts">
-    <h3><i class="fa fa-time"></i><span>Latest Posts</span></h3>{% for post in site.posts limit: 5 %}
+    <h3><i class="fa fa-clock-o"></i><span>Latest Posts</span></h3>{% for post in site.posts limit: 5 %}
     <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
     <h6>{{ post.date | format_date }}</h6>
   {% endfor %}</div>
