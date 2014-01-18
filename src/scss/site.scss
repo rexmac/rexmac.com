@@ -42,6 +42,10 @@ a {
   }
 }
 
+
+/* =============================================================================
+   Footer
+   ========================================================================== */
 footer {
   border-top: 1px solid #ddd;
   margin-top: $baseLineHeight;
@@ -63,6 +67,12 @@ footer {
   .html5-logo {
     clear: both;
     margin: 0.5em 0;
+    @include opacity(0.5);
+    @include transition(opacity 0.6s ease);
+
+    &:hover {
+      @include opacity(1);
+    }
   }
 
   .container-fluid & {
@@ -70,6 +80,10 @@ footer {
   }
 }
 
+
+/* =============================================================================
+   Miscellaneous
+   ========================================================================== */
 hr {
   border-top-color: #ddd;
   border-bottom-color: $grayLighter;
