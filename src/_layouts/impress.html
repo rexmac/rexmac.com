@@ -14,6 +14,9 @@
   {% if page.css %}{% for css in page.css %}
   <link rel="stylesheet" href="{{ css | cachebust_url }}" />
   {% endfor %}{% endif %}
+
+  {% include analytics %}
+
 </head>
 <body{% if page.body_id %} id="{{ page.body_id }}"{% endif %} class="impress-not-supported">
 
@@ -44,8 +47,6 @@
   {% if page.js %}{% for js in page.js %}
   <script src="{{ js | cachebust_url }}"></script>
   {% endfor %}{% endif %}
-
-  {% include analytics %}
 
   <!-- Whatchya lookin' at Willis?! -->
 </body>
