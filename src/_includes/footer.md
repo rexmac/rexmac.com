@@ -10,7 +10,7 @@ This site is proudly hosted on [Site5](http://www.site5.com/in.php?id=23116) bec
 <div class="span4">
 <ul class="social-media-links">
   <li><a class="ir twitter" href="http://twitter.com/{{ site.author.twitter }}" title="Follow me on Twitter">Follow me on Twitter</a></li>
-  <li><a class="ir gplus" href="http://gplus.to/rexmac" title="Follow me on Google+">Follow me on Google+</a></li>
+  <li><a class="ir gplus" href="http://google.com/+{{ site.author.gplus }}" title="Follow me on Google+">Follow me on Google+</a></li>
   <li><a class="ir github" href="http://github.com/{{ site.author.gitHub }}" title="View my projects on Github">View my projects on GitHub</a></li>
   <li><a class="ir stackoverflow" href="http://stackoverflow.com/users/624093/rexmac" title="View my StackOverflow profile">View my StackOverflow profile</a></li>
   <li><a class="ir rss" href="{{ site.url }}/feed" title="nom nom?">RSS Feed</a></li>
