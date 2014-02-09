@@ -108,7 +108,7 @@ task :new do
   title.strip!
   now = Time.now
   path = "#{src_dir}/_posts/#{now.strftime('%F')}-#{title.downcase.gsub(/[\s\.]/, '-').gsub(/[^\w\d\-]/, '')}.md"
-  if File.exist?(filename)
+  if File.exist?(path)
     abort("rake aborted!") if ask("#{path} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
   end
 

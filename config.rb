@@ -1,4 +1,5 @@
 # Compass config
+require 'companimation'
 
 # Publishing paths
 http_path = "/"

@@ -67,4 +67,5 @@
   }
 }
 #light-switch:hover {
+  @include opacity(1);
 }

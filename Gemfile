@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 
 group :development do
+  gem 'companimation'
   gem 'nokogiri'
   gem 'html_press'
 

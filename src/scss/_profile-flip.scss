@@ -33,7 +33,7 @@
     //margin: 36px;
   }
   .face.back {
-    display: block;
+    display: none;
   }
   .csstransforms3d.csstransitions & {
     @include perspective(1000px);
@@ -43,7 +43,10 @@
     }
     &:hover > div { @include rotateY(180deg); }
     .face { @include backface-visibility(hidden); }
-    .face.back { @include rotateY(180deg); }
+    .face.back {
+      display: block;
+      @include rotateY(180deg);
+    }
   }
   .navbar &, .navbar & > div, .navbar & .face {
     width: 40px;

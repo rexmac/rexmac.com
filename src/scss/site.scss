@@ -1,6 +1,7 @@
 @import "bootstrap/bootstrap";
 @import "bootstrap/responsive";
 @import "compass";
+@import "companimation";
 @import "font-awesome/font-awesome";
 @import "sprites";
 
@@ -76,7 +77,7 @@ footer {
   }
 
   .container-fluid & {
-      margin-right: 2em;
+    margin-right: 2em;
   }
 }
 
@@ -106,6 +107,8 @@ hr {
 @import "profile-flip";
 @import "socialmedia-icons";
 @import "tooltips";
+@import "print";
+@import "youtube";
 @import "browser-icons";
 @import "binarylife";
 @import "glider-tag";
@@ -120,6 +123,47 @@ hr {
 img.thumbnail {
   .lightsoff & { border-color: $gray; }
 }
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 979px) {
+  h1 {
+    font-size: $baseFontSize * 2; // ~28px
+    line-height: $baseLineHeight * 1.5; // ~30px
+  }
+  h2 { font-size: $baseFontSize * 1.75; } // ~24px
+  h3 { font-size: $baseFontSize * 1.5; } // ~21px
+
+  .post .page-header {
+    h1,
+    h5 {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+@media (max-width: 720px) {
+}
+
+@media (max-width: 480px) {
+  .very-large-text { font-size: 32px; }
+
+  body.home {
+    h3 { font-size: 20px; }
+    .span8 > br { display: none; }
+    //.container.wrapper > .row > .span12 > .row > .span4 { height: 357px; }
+  }
+}
+
+@media (max-width: 320px) {
+  body.home .container.wrapper > .row > .span12 > .row > .span4 { height: 357px; }
+}
+
+@media (max-width: 240px) {
+  body.home .container.wrapper > .row > .span12 > .row > .span4 { height: 246px; }
+}
+
 
 /* =============================================================================
    non-semantic helper classes
