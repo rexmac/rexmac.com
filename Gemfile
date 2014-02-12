@@ -10,7 +10,6 @@ group :development do
   gem 'compass', '~> 0.12'
   gem 'growl', '~> 1.0'
   gem 'fastimage', '~>1.5'
-  gem 'jekyll', '~> 0.12'
-  gem 'kramdown', '~> 1.0'
-  gem 'less', '~> 2.3'
+  gem 'jekyll', '~> 1.4.3'
+  gem 'kramdown', '~> 1.3.1'
 end

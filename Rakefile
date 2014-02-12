@@ -135,7 +135,7 @@ task :html do
     message "failed".colorize(:red) + ". - jekyll executable not found"
   else
     #system "jekyll" + ENV['JEKYLL_ENV'] !== 'development' ? " > /dev/null 2>&1"
-    out = `jekyll`
+    out = `jekyll build --plugins ./_plugins 2>&1`
     print "\n" + out.gsub(/^/, "    ")
     message "done".colorize(:green) + '.'
   end
