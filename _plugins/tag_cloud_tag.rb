@@ -3,7 +3,7 @@
 # Original: https://github.com/BlackBulletIV/blackbulletiv.github.com/blob/master/_plugins/tag_cloud.rb
 #
 module Jekyll
-  class TagCloud < Liquid::Tag
+  class TagCloudTag < Liquid::Tag
     @@max_size = 280
     @@min_size = 75
     safe = true
@@ -42,9 +42,10 @@ module Jekyll
         tags.inject("") do |html, tag|
           length = tag[:posts].length
 
+          url = ("#{site.config['url']}/#{site.config['tag_dir']}/#{tag[:slug]}/").gsub("//#{site.config['domain']}", "//blog.#{site.config['domain']}").gsub("/blog/", "/")
           html << %(
             <span style="font-size: #{weights[tag[:title]].to_i}%">
-              <a href="/#{site.config['tag_dir']}/#{tag[:slug]}/" title="#{length} post#{"s" if length != 1}">#{tag[:title]}</a>
+              <a href="#{url}" title="#{length} post#{"s" if length != 1}">#{tag[:title]}</a>
             </span>&nbsp;
           )
 
@@ -56,4 +57,4 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_tag('tag_cloud', Jekyll::TagCloud)
+Liquid::Template.register_tag('tag_cloud', Jekyll::TagCloudTag)

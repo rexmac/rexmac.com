@@ -8,7 +8,10 @@ RewriteCond %{THE_REQUEST} ^(?:.+\ )/blog [NC]
 RewriteRule ^(.*)$ /$1 [QSA,L,R=301]
 
 # Redirect rexmac.com/blog to blog.rexmac.com
-#RewriteCond %{HTTP_HOST} ^rexmac\.com(:80)?$ [NC]
-#RewriteCond %{REQUEST_URI} ^/blog [NC]
-#RewriteRule ^(.*)$ http://blog.rexmac.com/$1 [QSA,L]
+RewriteCond %{HTTP_HOST} ^rexmac\.com(:80)?$ [NC]
+RewriteRule ^(.*)$ http://blog.rexmac.com/$1 [QSA,L]
+
+# Redirect rexmac.dev/blog to blog.rexmac.dev
+RewriteCond %{HTTP_HOST} ^rexmac\.dev(:80)?$ [NC]
+RewriteRule ^(.*)$ http://blog.rexmac.dev/$1 [QSA,L]
 </IfModule>

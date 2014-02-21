@@ -9,6 +9,8 @@ $link-color: $linkColor;
 $noise-bg: image-url('noise.png') 0 0 !default;
 $icons-sprite: image-url($iconSpritePath) !default;
 $icons-white-sprite: image-url($iconWhiteSpritePath) !default;
+$lightsoffLinkColor: #08f;
+$lightsoffLinkColorHover: #5bf;
 
 @mixin selection($bg, $color: inherit, $text-shadow: none){
   * {
@@ -20,10 +22,6 @@ $icons-white-sprite: image-url($iconWhiteSpritePath) !default;
 
 @import "solarized";
 @import "syntax";
-
-$lightsoffLinkColor: #08f;
-$lightsoffLinkColorHover: #5bf;
-
 @import "helpers";
 
 body {
@@ -43,63 +41,13 @@ a {
   }
 }
 
-
-/* =============================================================================
-   Footer
-   ========================================================================== */
-footer {
-  border-top: 1px solid #ddd;
-  margin-top: $baseLineHeight;
-  padding-top: $baseLineHeight / 4;
-  .lightsoff & {
-    border-color: $grayDark;
-    color: $gray;
-  }
-  .lightsoff & a {
-    @include opacity(.8);
-  }
-
-  p {
-    font-size: 90%;
-    margin-bottom: 0;
-    text-align: left !important;
-  }
-
-  .html5-logo {
-    clear: both;
-    margin: 0.5em 0;
-    @include opacity(0.5);
-    @include transition(opacity 0.6s ease);
-
-    &:hover {
-      @include opacity(1);
-    }
-  }
-
-  .container-fluid & {
-    margin-right: 2em;
-  }
-}
-
-
-/* =============================================================================
-   Miscellaneous
-   ========================================================================== */
-hr {
-  border-top-color: #ddd;
-  border-bottom-color: $grayLighter;
-  .lightsoff & {
-    border-top-color: $grayDarker;
-    border-bottom-color: $grayDark;
-  }
-}
-
 @import "accordions";
 @import "alerts";
 @import "buttons";
 @import "dictionary";
 @import "forms";
 @import "nav";
+@import "footer";
 @import "sidebar";
 @import "posts";
 @import "post-dates";
@@ -124,6 +72,9 @@ img.thumbnail {
   .lightsoff & { border-color: $gray; }
 }
 
+/* =============================================================================
+   Media queries
+   ========================================================================== */
 @media (max-width: 1024px) {
 }
 

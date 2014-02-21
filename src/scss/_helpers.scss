@@ -7,11 +7,11 @@
 .auto-width { width: auto; }
 .center,
 .centered { margin-left: auto; margin-right: auto; }
-img.alignleft {
+img.align-left {
   float: left;
   margin: 0 1em 1em 0;
 }
-img.alignright {
+img.align-right {
   float: right;
   margin: 0 0 1em 1em;
 }
@@ -19,6 +19,7 @@ img.center { display: block; }
 .chromeframe { margin-bottom: 0; @include border-radius(0!important); }
 .no-bottom { margin-bottom: 0; }
 .no-top { margin-top: 0; }
+p.small { font-size: 80%; }
 .strikethrough { text-decoration: line-through; }
 a.strikethrough { text-decoration: line-through!important; }
 .text-center { text-align: center; }
@@ -32,15 +33,17 @@ a.strikethrough { text-decoration: line-through!important; }
   letter-spacing: -1px;
   text-rendering: optimizelegibility;
 }
-
-.pageanchor,
+.page-anchor,
 .readmore-anchor {
   position: relative;
   display: inline-block;
-  top: -40px;
+  top: -($navbarHeight);
   width: 0;
   height: 0;
+  float: left;
+  margin: 0;
+  padding: 0;
 }
 .readmore-anchor {
-  top: -60px;
+  top: -($navbarHeight + 20px);
 }
