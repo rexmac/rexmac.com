@@ -9,28 +9,22 @@
 
 .profile-image-flip {
   position: relative;
-  //width: 200px;
-  //height: 200px;
   width: 128px;
   height: 128px;
   z-index: 1;
+
   & > div {
-    //width: 200px;
-    //height: 200px;
     width: 128px;
     height: 128px;
   }
   .face {
     position: absolute;
-    //width: 200px;
-    //height: 200px;
     width: 128px;
     height: 128px;
   }
   .face.front {
     width: 128px;
     height: 128px;
-    //margin: 36px;
   }
   .face.back {
     display: none;
@@ -57,5 +51,16 @@
     height: 36px;
     margin: 2px;
   }
-  .sidebar-module & { margin: 0 auto; }
+  .sidebar-module & {
+    margin: 0 auto;
+    padding: 4px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.2);
+    @include box-shadow(0 1px 3px rgba(0,0,0,.1));
+  }
+}
+
+.sidebar-module.profile-image {
+  margin-bottom: $baseLineHeight;
 }

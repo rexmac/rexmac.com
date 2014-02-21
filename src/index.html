@@ -1,8 +1,9 @@
 ---
 layout: default
 no_sidebar: true
-changefreq: weekly
+changefreq: monthly
 priority: 1
+body_class: home
 ---
 
 <div class="hero-unit">
@@ -32,6 +33,7 @@ priority: 1
     <h2>Latest Blog Posts</h2>
     {% assign posts = site.posts %}
     {% assign listing_limit = 5 %}
+    {% assign no_tags = true %}
     {% include post-listing.html %}
   </div>
 </div>

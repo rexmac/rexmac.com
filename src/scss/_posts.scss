@@ -15,18 +15,52 @@
   p { text-align: justify; }
 }
 
-hr.faded {
-  height: 1px;
-  line-height: 1px;
-  margin-top: 1em;
-  padding-bottom: 1em;
-  border: none;
-  background: transparent image-url('hr.png') 50% 0 no-repeat;
+
+/* =============================================================================
+   Horizontal rules
+   ========================================================================== */
+hr {
+  border-top-color: #ddd;
+  border-bottom-color: $grayLighter;
+  .lightsoff & {
+    border-top-color: $grayDarker;
+    border-bottom-color: $grayDark;
+  }
+
+  &.faded {
+    height: 1px;
+    line-height: 1px;
+    margin-top: 1em;
+    padding-bottom: 1em;
+    border: none;
+    background: transparent image-url('hr.png') 50% 0 no-repeat;
+  }
+
+  &.unseen {
+    display: none;
+
+    body.blog_home &,
+    body.category &,
+    body.home &,
+    body.tag & {
+      display: block;
+      @extend hr.faded;
+      padding-bottom: 0;
+      margin-top: 2em;
+
+      &:last-child { display: none; }
+    }
+  }
 }
 
 .post {
   .tags { margin-bottom: $baseLineHeight; }
   .next-prev-nav { text-align: center; }
+}
+
+.recent-posts {
+  .post-title { font-size: $baseFontSize * 1.25 !important; }
+  .post-meta { margin-top: -10px; }
 }
 
 .pagination {
@@ -45,7 +79,7 @@ hr.faded {
     float: right;
 
     &:after {
-      content: '»';
+      content: '\00BB';
       padding-left: 0.5em;
     }
   }
@@ -53,7 +87,7 @@ hr.faded {
     float: left;
 
     &:before {
-      content: '«';
+      content: '\00AB';
       padding-right: 0.5em;
     }
   }
