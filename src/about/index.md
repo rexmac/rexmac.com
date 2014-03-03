@@ -21,7 +21,7 @@ When I'm not coding (which is rare), I enjoy cooking, gaming, brewing beer, and 
 
 ## Skills
 
-I am a polyglot, full-stack programmer. For the last several years, I have been developing efficient, scalable web apps with a focus on UX, a11y, and handsome UIs.
+I am a polyglot, full-stack programmer. For the last several years, I have been developing efficient, scalable web apps with a focus on UX, a11y, and handsome UIs. The tree(heat)map below serves as a visual aid to my level of proficiency in programming languages and frameworks that I have used recently. I will try to keep this updated as my proficiency level is in a constant state of flux as I move from project to project or try new things.
 
 #### Proficiencies
 
