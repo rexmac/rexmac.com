@@ -34,7 +34,7 @@ description: Software and hardware projects of Rex McConnell
 #### <a id="just-for-fun"></a>Just for Fun
 
 * [One-Click Class](http://oneclickclass.com/)
-  * Just what the name says
+  * One click to instantly set the mood and raise the status of the room's ambience.
   
 #### <a id="misc"></a>Misc
 
