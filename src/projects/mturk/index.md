@@ -227,7 +227,7 @@ To learn more about this app and why it was created, please read [this blog post
 <ul class="changelog">
   <li><strong>Version 1.00b</strong> - <em>2013-01-29</em>
     <ul>
-      <li>Removed server-side code. Everything is now done in browser and AWS request is relayed through <a href="http://pipes.yahoo.com/">Yahoo! Pipes</a>.</li>
+      <li>Removed server-side code. Everything is now done in-browser and AWS requests are relayed through <a href="http://pipes.yahoo.com/">Yahoo! Pipes</a>.</li>
     </ul>
   </li>
   <li><strong>Version 0.06</strong> - <em>2012-08-26</em>
