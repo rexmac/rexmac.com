@@ -1,1 +1,0 @@
-gem install em-dir-watcher

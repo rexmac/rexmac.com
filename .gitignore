@@ -1,9 +1,0 @@
-.DS_Store
-.js-cache
-.pygments-cache
-.sass-cache
-_secrets.yml
-*.sublime-*
-/src/css
-/src/js
-/public
