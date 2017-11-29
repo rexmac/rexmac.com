@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: security | rexmac.com]]></title>
+  <link href="http://rexmac.com/blog/category/security/feed.xml" rel="self"/>
+  <link href="http://rexmac.com/"/>
+  <updated>2016-07-17T22:38:21-05:00</updated>
+  <id>http://rexmac.com/</id>
+  <author>
+    <name><![CDATA[{"name"=>"Rex McConnell", "github"=>"rexmac", "gplus"=>"RexMcConnell", "twitter"=>"_rexmac"}]]></name>
+    
+  </author>
+  <generator uri="https://github.com/recurser/jekyll-plugins">Recurser</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Openswan Patch for Android ICS Bug]]></title>
+    <link href="http://rexmac.com/blog/openswan-patch-for-android-ics-bug"/>
+    <updated>2012-09-07T16:22:40Z</updated>
+    <id>http://rexmac.com/blog/openswan-patch-for-android-ics-bug</id>
+    <content type="html"><![CDATA[<p>I recently <a href="http://blog.rexmac.com/internet-security-when-travelling">setup a private <abbr title="Virtual Private Network">VPN</abbr> using an Amazon EC2 instance</a>. Unfortunately, while my Samsung Galaxy Nexus, which is running Android JellyBean, has no trouble connecting to the <abbr title="Virtual Private Network">VPN</abbr>, my wife’s Samsung Galaxy S2, which is running Android <abbr title="Ice Cream Sandwhich (Goolge Android OS v4.0.x)">ICS</abbr>, refused to connect. The only error on the phone was “Timeout”. Very helpful. Thankfully, the authentication log on the EC2 instance revealed much more:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/var/log/auth.log</span></figcaption><div class="highlight"><table><tr><td class="code"><pre><code class="plain"><span class="line">Sep  7 14:38:22 localhost pluto[7325]: "L2TP-PSK-NAT"[32] xxx.xxx.xxx.xxx #30: sending notification PAYLOAD_MALFORMED to xxx.xxx.xxx.xxx:60138</span>
+<span class="line">Sep  7 14:38:24 localhost pluto[7325]: "L2TP-PSK-NAT"[32] xxx.xxx.xxx.xxx #30: byte 7 of ISAKMP NAT-OA Payload must be zero, but is not</span>
+<span class="line">Sep  7 14:38:24 localhost pluto[7325]: "L2TP-PSK-NAT"[32] xxx.xxx.xxx.xxx #30: malformed payload in packet</span>
+</code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Using the information in that log, I was able to find this <a href="http://code.google.com/p/android/issues/detail?id=23124">bug report</a>. Apparently, Android <abbr title="Ice Cream Sandwhich (Goolge Android OS v4.0.x)">ICS</abbr> contains a bug in its implementation of ipsec-tools. Samsung is rumoured to be releasing an update to JellyBean for the Galaxy S2 very soon, but we’re travelling this weekend and I would like for her phone to be able to tunnel through the <abbr title="Virtual Private Network">VPN</abbr> while we’re away for security reasons (please see <a href="http://blog.rexmac.com/internet-security-when-travelling">earlier post</a>).  </p>
+
+<p>Thankfully, I found <a href="http://code.google.com/p/android/issues/detail?id=23124#c180">this comment</a> on the issue, which provided a patch for Openswan that makes allowances for the ipsec-tools bug in Android <abbr title="Ice Cream Sandwhich (Goolge Android OS v4.0.x)">ICS</abbr>. Of course, this meant that I had to build Openswan from source rather than using the previously installed <code>.deb</code> package. No worries, let’s get started.</p>
+
+<p>First, as I was using a brand new EC2 instance running Ubuntu, I had to setup the build environment:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Console</span></figcaption><div class="highlight"><table><tr><td class="code"><pre><code class="plain"><span class="line">$ sudo apt-get install make gcc bison flex</span>
+<span class="line">$ sudo apt-get install libgmp3-dev # Required to build openswan</span>
+</code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I then downloaded the Openswan sources, unpacked them, applied the patch, built and installed the patched version of Openswan, and restarted some services:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Console</span></figcaption><div class="highlight"><table><tr><td class="code"><pre><code class="plain"><span class="line">$ wget http://ftp.openswan.org/openswan/openswan-2.6.38.tar.gz</span>
+<span class="line">$ tar xzf openswan-2.6.38.tar.gz</span>
+<span class="line">$ cd openswan-2.6.38</span>
+<span class="line">$ wget http://android.googlecode.com/issues/attachment?aid=231240180000&amp;name=openswan-android-ics-natoa.patch</span>
+<span class="line">$ patch &lt; openswan-android-ics-natoa.patch</span>
+<span class="line">$ make programs</span>
+<span class="line">$ sudo make install</span>
+<span class="line">$ sudo /etc/init.d/ipsec restart</span>
+<span class="line">$ sudo /etc/init.d/xl2tpd restart</span>
+</code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>At this point, the Galaxy S2 was able to connect to the <abbr title="Virtual Private Network">VPN</abbr>.</p>
+
+<p>Hopefully, the JellyBean update for the S2 will be released soon and fix this issue, at which point I can revert back to using the unpatched version of Openswan.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Internet Security When Travelling]]></title>
+    <link href="http://rexmac.com/blog/internet-security-when-travelling"/>
+    <updated>2012-09-07T16:22:40Z</updated>
+    <id>http://rexmac.com/blog/internet-security-when-travelling</id>
+    <content type="html"><![CDATA[<p>My wife and I plan on doing some travelling soon, and, as usual, we will be bringing along plenty of digital toys (e.g., laptop, iPad, smartphone). All of these upcoming trips are for business purposes, so we’ll need to be checking our email and accessing other online resources on-the-go. In the past, I have always avoided using WiFi hotspots in airports and hotels (or anywhere, really) as they are typically unsecured and open to prying “eyes”<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. However, there have been times when I needed to check my email, do some work for a client, or even (gasp!) access my online banking while on the road. I have always been careful to ensure that HTTPS was used and changed my login credentials as soon as I was at a “safer” location (i.e., home), but there is still a lot of danger involved in doing these activities from…well, anywhere, really, but I tend to trust my home network (admittedly, more than I should), as I have taken extra precautions and thrown up some obstacles to deter common digital theives. Of course, if someone <em>really</em> wants your data, there’s not much you can do, but, as I have no known enemeies, I feel relatively safe when using my home connection. On the road, however, I feel completely helpless and vulnerable…until today.</p>
+
+<p>I had the (not quite) brilliant idea of making my own <abbr title="Virtual Private Network">VPN</abbr> that I could use to route all my internet traffic through while on the road. Using a <abbr title="Virtual Private Network">VPN</abbr> means all the traffic to and from my devices will be encrypted and (more) secure. I have had access to <abbr title="Virtual Private Network">VPN</abbr>s through employers in the past, but I never used them for anything other than work as they were typically quite slow and there is no way of knowing if the employer is snooping on the traffic. I used to run a private server from my home, which would have been perfect for use as a <abbr title="Virtual Private Network">VPN</abbr>, but, in an effort to cut costs, I left it behind when I moved to Europe. There are plenty of commercial, hosted <abbr title="Virtual Private Network">VPN</abbr> products on the market, but most require a monthly fee, and like an employer-hosted <abbr title="Virtual Private Network">VPN</abbr>, I have no way of knowing if the host is snooping on the traffic. I wanted a <abbr title="Virtual Private Network">VPN</abbr> that was cheap (preferrably free), easy to setup, and also temporary. I only travel a few times a year, and when I’m at home, I have no use for the <abbr title="Virtual Private Network">VPN</abbr>, so I really only need it t be active for a few days or weeks at a time. Amazon’s cloud computing service, EC2, sounded like the perfect solution. Before leaving home, I can launch an instance and setup the <abbr title="Virtual Private Network">VPN</abbr>. While on the road, I can securely use the internet from all of my devices by tunneling through the <abbr title="Virtual Private Network">VPN</abbr>. Then, when I get home again, I can terminate the instance. Amazon currently has a very generous <a href="http://aws.amazon.com/free/">free usage tier</a>, so running the <abbr title="Virtual Private Network">VPN</abbr> should end up costing me nothing but the time it takes to launch an instance and configure my devices. Sounds excellent, let’s get started!</p>
+
+<p>The first step was to create an EC2 instance. Before getting started, I did some quick googling to see if anyone else had used an EC2 instance a their personal <abbr title="Virtual Private Network">VPN</abbr>. As is the case with most of my ideas, dozens (if not hundreds) of people had already setup EC2 instances as <abbr title="Virtual Private Network">VPN</abbr>s <em>and</em> they had blogged about it. Many of them had done everything by hand, a task I was certainly prepared for, but I was hoping to automate as much of the process as possible. Luckily, I happend across <a href="https://github.com/sarfata/voodooprivacy#the-vpn">VoodooPrivacy</a>. That project contains an excellent shell script that can be used to easily setup a <abbr title="Virtual Private Network">VPN</abbr> when launching an EC2 instance. The shell script from Voodoo Privacy contains some <a href="https://github.com/sarfata/voodooprivacy/blob/master/voodoo-vpn.sh#L21">variables</a> to hold the <abbr title="Virtual Private Network">VPN</abbr> login credentials, however, I prefer to use unique <abbr title="Virtual Private Network">VPN</abbr> login credentials for each device<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, so I removed these variables and hard-coded my credentials into the script <a href="https://github.com/sarfata/voodooprivacy/blob/master/voodoo-vpn.sh#L108">where needed</a>. After, adjusting my EC2 security policy<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>, I was ready to go.</p>
+
+<p>I am quite comfortable with several linux distros, but I chose the default 64-bit Ubuntu instance provided by Amazon as that is my distro of choice for personal projects. I’m not going to go into detail on setting up an EC2 instance, if you need assistance, try <a href="https://google.com/search?q=setup+ec2+instance">Google</a>. The Voodoo Privacy guide suggests copying and pasting the shell script into the “User data” field, but I was able to upload it (perhaps that is a new feature). After launching the instance (and attaching an elastic IP to it), I began configuring my devices to use the <abbr title="Virtual Private Network">VPN</abbr>. I had no issues configuring our MacBook Pros (MBP3.1 w/ OSX 10.7.4 and MBP5.1 w/ OSX 10.6.8) or my Samsung Galaxy Nexus (which is running JellyBean v4.1.1). However, I ran into trouble when trying to configure my Windows 7 laptop and my wife’s Samsung Galaxy S2 (which is running <abbr title="Ice Cream Sandwhich (Goolge Android OS v4.0.x)">ICS</abbr> v4.0.3). The issue with my Windows 7 machine turned out to be a PEBKAC error. I’m still not 100% sure how I resolved it, but I think it had something to do with unchecking “Use Windows logon domain”. The issue with the Galaxy S2 was not so easy. Apparently, there is a <a href="code.google.com/p/android/issues/detail?id=23124">bug in the ipsec-tools</a> implementation within Android <abbr title="Ice Cream Sandwhich (Goolge Android OS v4.0.x)">ICS</abbr>. I am still looking for a fix. </p>
+
+<p>Edit: I have <a href="http://blog.rexmac.com/openswan-patch-for-android-ics-bug">found a solution</a> to the Galaxy S2 problem.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>I never, ever, ever (ever!) trust or use a public computer such as in an internet cafe or a hotel business center to do anything other than general browsing. The computer may have a wired connection and the owner may swear it is secure, but I have no way of knowing for sure. Where does the wire go once it’s in the wall? Who may be tapped into it? What malicious software has been installed on the machine or the loca network? The list goes on. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Using unique login credentials for each device allows me to easily remove the credentials for that device should it ever be lost or stolen, without effecting the other devices. In other words, if a device is lost or stolen and I used the same login credentials for every device, then I would have to change the credentials on the server and every device. That’s a lot of work! =\ <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>The Voodoo Privacy guide incorrectly states that port 450 needs to be opened to UDP traffic. AFAIK, it should actually be port 500. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: lyfebites | rexmac.com]]></title>
+  <link href="http://rexmac.com/blog/category/lyfebites/feed.xml" rel="self"/>
+  <link href="http://rexmac.com/"/>
+  <updated>2016-07-17T22:38:21-05:00</updated>
+  <id>http://rexmac.com/</id>
+  <author>
+    <name><![CDATA[{"name"=>"Rex McConnell", "github"=>"rexmac", "gplus"=>"RexMcConnell", "twitter"=>"_rexmac"}]]></name>
+    
+  </author>
+  <generator uri="https://github.com/recurser/jekyll-plugins">Recurser</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[VirtualBox Host-only Adater for Ubuntu VM]]></title>
+    <link href="http://rexmac.com/blog/virtualbox-host-only-adater-for-ubuntu-vm"/>
+    <updated>2013-02-25T13:17:53Z</updated>
+    <id>http://rexmac.com/blog/virtualbox-host-only-adater-for-ubuntu-vm</id>
+    <content type="html"><![CDATA[<p>Just some notes to help me next time I go about setting up an Ubunutu VM</p>
+
+<h2 id="configure-host-only-interface">Configure host-only interface</h2>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>/etc/network/interfaces</span></figcaption><div class="highlight"><table><tr><td class="code"><pre><code class="plain"><span class="line"># The loopback interface</span>
+<span class="line">auto lo</span>
+<span class="line">iface lo inet loopback</span>
+<span class="line"></span>
+<span class="line"># The primary network interface</span>
+<span class="line">auto eth0</span>
+<span class="line">iface eth0 inet dhcp</span>
+<span class="line"></span>
+<span class="line"># The secondary network interface</span>
+<span class="line">auto eth1</span>
+<span class="line">iface eth1 inet static</span>
+<span class="line">    address 192.168.56.101</span>
+<span class="line">    netmask 255.255.255.0</span>
+<span class="line">    gateway 192.168.56.1</span>
+</code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>sudo /etc/init.d/networking restart</code></p>
+
+<h2 id="update-system">Update system</h2>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Console</span></figcaption><div class="highlight"><table><tr><td class="code"><pre><code class="plain"><span class="line">sudo apt-get update</span>
+<span class="line">sudo apt-get upgrade</span>
+<span class="line">sudo reboot</span>
+</code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="build-abbr-titlephp-hypertext-preprocessorphpabbr-v5322-on-ubuntu-12041-tls">Build <abbr title="PHP: Hypertext Preprocessor">PHP</abbr> v5.3.22 on Ubuntu 12.04.1 TLS</h3>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Console</span></figcaption><div class="highlight"><table><tr><td class="code"><pre><code class="plain"><span class="line">sudo apt-get install build-essential</span>
+<span class="line">sudo apt-get install dpkg-dev # necessary?</span>
+<span class="line">sudo apt-get install apache2-prefork-dev libpng-dev libmcrypt-dev libjpeg-dev libicu-dev libreadline-dev libxslt-dev libxml2-dev libcurl4-dev libbz2-dev libmhash-dev libltdl-dev</span>
+</code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="build-abbr-titlephp-hypertext-preprocessorphpabbr-v54x-on-ubunutu-12041-tls">Build <abbr title="PHP: Hypertext Preprocessor">PHP</abbr> v5.4.x on Ubunutu 12.04.1 TLS</h3>
+<p><code>???</code></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jekyll Power]]></title>
+    <link href="http://rexmac.com/blog/jekyll-power"/>
+    <updated>2012-09-01T12:03:01Z</updated>
+    <id>http://rexmac.com/blog/jekyll-power</id>
+    <content type="html"><![CDATA[<p>Several months ago, when I decided to launch a new blog, I knew that I wanted a platform that would allow me to quickly and easily add new content (and manage existing content), while also spreading my developer wings and having some fun in the process.</p>
+
+<h4 id="wordpresshttpwordpressorg"><a href="http://wordpress.org/">WordPress</a></h4>
+
+<p>I’ve used it in the past for personal projects and also for a few clients, but it always felt…wrong. From a user’s perspective, <abbr title="WordPress">WP</abbr> can be a pleasure, but it can also feel a bit daunting with it’s myriad of options in the Admin panel. From a developer’s perspective, <abbr title="WordPress">WP</abbr> is simply atrocious. I could rant for years on the faults of the <abbr title="WordPress">WP</abbr> code base, but I would rather get on with life. Suffice to say, using <abbr title="WordPress">WP</abbr> for my blog was never an option.</p>
+
+<h4 id="perchhttpgrabaperchcom"><a href="http://grabaperch.com/">Perch</a></h4>
+
+<p>I’ve heard great things about this little <abbr title="Content Management System">CMS</abbr>, and I am a big fan of <a href="http://www.edgeofmyseat.com/">the developers</a>. I definitely plan on experimenting with Perch in the near future as I think it could be a great platform for clients that require easy editing of their site without feeling overwhelmed by unnecessary complexity. I came very close to purchasing a license and using Perch for this site, but then…</p>
+
+<h4 id="jekyllhttpjekyllrborg"><a href="http://jekyllrb.org">Jekyll</a></h4>
+
+<p>I discovered Jekyll when I began looking into hosting a site using <a href="http://pages.github.com/">Github Pages</a>. I was, initially, slightly put off by the idea of a static site, but the more I thought about it, the more sense it made. Do I really need all the processing overhead of a full-blown <abbr title="PHP: Hypertext Preprocessor">PHP</abbr>/Ruby/whatever stack behind each request for a simple blog? No. Do I really need a (bulky) front-end system to assist with managing the site and its content? No. A static site means there are no security holes introduced by a front-end management system, and any web server can serve up static files lickity split. Double win!</p>
+
+<p>I also find the idea of writing blog posts in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> to be very appealing. It means that I can write/edit posts in my favorite editors (<a href="http://www.vim.org/">VIM</a> and <a href="http://www.sublimetext.com/">Sublime Text 2</a>) with a high factor of readability (compared to writing <abbr title="HypeyText Markup Language">HTML</abbr>) and without the unnecessary bloat and ~~potential~~ pitfalls of a <abbr title="What You See Is (sometimes) What You Get">WYSIWYG</abbr> editor. Even more win!</p>
+
+<p>And rather than storing all the content (and prior versions) in a bulky <abbr title="Relational DataBase Management System">RDBMS</abbr>, I can store every revision of the site’s content (<em>and</em> the source code) in a git repo. ZOMG, win covered in awesomesauce with more win on top!</p>
+
+<p>The one major drawback to using Jekyll to generate my new blog is that, aside from some very minor hacking on <a href="http://redmine.org">Redmine</a>, I have no experience with <a href="en.wikipedia.org/wiki/Ruby_%28programming_language%29">Ruby</a> programming (Oh, by the way, Jekyll is written in Ruby).</p>
+
+<p>…???…mention other static site generators like MiddleMan and nanoc</p>
+
+<p>It wasn’t too long into this foray, that I built up quite a collection of very useful plugins for Jekyll. Unfortunately, Github Pages <a href="https://github.com/mojombo/jekyll/issues/325">does not allow plugins for security reasons</a> (and rightly so). One solution would be to generate the site locally and then push the changes to github, but I’m actually happier hosting the site myself as I have more control. After modifying a few plugins that I gathered from the interwebs<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I have even managed to hack together some of my own Jekyll plugins (I hope to blog about those later).</p>
+
+<p>So far, I am happy with the results. I wish I was a better designer, but I think the site looks fairly decent.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>I drew a lot of inspiration (read: borrowed a lot of code) from <a href="https://github.com/BlackBulletIV/blackbulletiv.github.com">BlackBulletIV</a>, <a href="http://jekyllbootstrap.com">Jekyll-Bootstrap</a>, and <a href="http://octopress.org">Octopress</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+  </entry>
+  
+</feed>

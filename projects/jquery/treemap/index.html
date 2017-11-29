@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Treemap Demo</title>
+
+    <link type="text/css" rel="stylesheet" href="demo_files/prism.css">
+    <link type="text/css" rel="stylesheet" href="css/jquery.treemap.css">
+    <style type="text/css">
+        html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; color: #222; }
+        body { margin: 0; font-size: 0.75em; line-height: 1.4; padding: 1em; }
+        /*h2 { font-size: 1.1em; margin-bottom: 0.5em; }*/
+        h2 { border-bottom: 1px solid #999; }
+        h3 { border-bottom: 1px solid #ccc; }
+        p { margin-top: 0; }
+        pre { box-shadow: 2px 2px 4px #aaa; border-radius: 4px; }
+        .demo-container { padding: 1em; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 1em; }
+        .demo-container h3 { margin-top: 0; }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="demo_files/prism.js"></script>
+    <script src="js/jquery.treemap.min.js"></script>
+    <script>
+$(function() {
+    var population = [
+        {"label":"China", "value":1343239923},
+        {"label":"India", "value":1205073612},
+        {"label":"United States", "value":313847465},
+        {"label":"Indonesia", "value":248645008},
+        {"label":"Brazil", "value":199321413},
+        {"label":"Pakistan", "value":190291129},
+        {"label":"Nigeria", "value":170123740},
+        {"label":"Bangladesh", "value":161083804},
+        {"label":"Russia", "value":142517670},
+        {"label":"Japan", "value":127368088},
+        {"label":"Mexico", "value":114975406},
+        {"label":"Philippines", "value":103775002},
+        {"label":"Vietnam", "value":91519289},
+        {"label":"Ethiopia", "value":91195675},
+        {"label":"Egypt", "value":83688164},
+        {"label":"Germany", "value":81305856},
+        {"label":"Turkey", "value":79749461},
+        {"label":"Iran", "value":78868711},
+        {"label":"Congo, Democratic Republic of the", "value":73599190},
+        {"label":"Thailand", "value":67091089}
+    ];
+
+    $('#demo-ul').treemap();
+    $('#demo-ul-without-heatmap').treemap({colors: ['#36C', '#36C']});
+    $('#demo-div').treemap({data: population});
+    $('#demo-ul-with-legend').treemap({
+        colors: ['#93c', '#f00'],
+        legend: true,
+        legendLabels: ['Cold', 'Hot']
+    });
+});
+  </script>
+</head>
+<body>
+
+    <h1>jQuery Treemap v0.1.0</h1>
+    <p>A (simple) jQuery plugin for generating treemaps.</p>
+
+    <h2>Download</h2>
+    <p>You can <a href="https://github.com/rexmac/jquery-treemap">download the source</a> on GitHub. Contribution in the forms of bug reports, feature requests, and code improvements are most welcome!</p>
+
+    <h2>Usage and Demos</h2>
+
+    <div class="demo-container">
+        <h3>Reading data from list elements of an unordered list</h3>
+        <h4>HTML:</h4>
+        <pre><code class="language-markup">
+&lt;ul id="demo-ul"&gt;
+  &lt;li value="100"&gt;A&lt;/li&gt;
+  &lt;li value="100"&gt;B&lt;/li&gt;
+  &lt;li value="100"&gt;C&lt;/li&gt;
+  &lt;li value="25"&gt;D&lt;/li&gt;
+  &lt;li value="25"&gt;E&lt;/li&gt;
+  &lt;li value="25"&gt;F&lt;/li&gt;
+  &lt;li value="25"&gt;G&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+        <h4>Javascript:</h4>
+        <pre><code class="language-javascript">$('#demo-ul').treemap();</code></pre>
+        <h4>Result:</h4>
+        <ul id="demo-ul">
+            <li value="100">A</li>
+            <li value="100">B</li>
+            <li value="90">C</li>
+            <li value="80">D</li>
+            <li value="40">E</li>
+            <li value="40">F</li>
+            <li value="25">G</li>
+        </ul>
+    </div>
+
+    <div class="demo-container">
+        <h3>Without &ldquo;heatmap&rdquo;</h3>
+        <h4>HTML:</h4>
+        <pre><code class="language-markup">
+&lt;ul id="demo-ul-without-heatmap"&gt;
+  &lt;li value="100"&gt;A&lt;/li&gt;
+  &lt;li value="100"&gt;B&lt;/li&gt;
+  &lt;li value="100"&gt;C&lt;/li&gt;
+  &lt;li value="25"&gt;D&lt;/li&gt;
+  &lt;li value="25"&gt;E&lt;/li&gt;
+  &lt;li value="25"&gt;F&lt;/li&gt;
+  &lt;li value="25"&gt;G&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+        <h4>Javascript:</h4>
+        <pre><code class="language-javascript">$('#demo-ul').treemap({colors: ['#36C', '#36C']);</code></pre>
+        <h4>Result:</h4>
+        <ul id="demo-ul-without-heatmap">
+            <li value="100">A</li>
+            <li value="100">B</li>
+            <li value="90">C</li>
+            <li value="80">D</li>
+            <li value="40">E</li>
+            <li value="40">F</li>
+            <li value="25">G</li>
+        </ul>
+    </div>
+
+    <div class="demo-container">
+        <h3>Empty DIV, Passing in data</h3>
+        <h4>HTML:</h4>
+        <pre><code class="language-markup">&lt;div id="demo-div"&gt;&lt;/div&gt;</code></pre>
+
+        <h4>Javascript:</h4>
+        <pre><code class="language-javascript">
+var population = [
+    {"label":"China", "value":1343239923},
+    {"label":"India", "value":1205073612},
+    {"label":"United States", "value":313847465},
+    {"label":"Indonesia", "value":248645008},
+    {"label":"Brazil", "value":199321413},
+    {"label":"Pakistan", "value":190291129},
+    {"label":"Nigeria", "value":170123740},
+    {"label":"Bangladesh", "value":161083804},
+    {"label":"Russia", "value":142517670},
+    {"label":"Japan", "value":127368088},
+    {"label":"Mexico", "value":114975406},
+    {"label":"Philippines", "value":103775002},
+    {"label":"Vietnam", "value":91519289},
+    {"label":"Ethiopia", "value":91195675},
+    {"label":"Egypt", "value":83688164},
+    {"label":"Germany", "value":81305856},
+    {"label":"Turkey", "value":79749461},
+    {"label":"Iran", "value":78868711},
+    {"label":"Congo, Democratic Republic of the", "value":73599190},
+    {"label":"Thailand", "value":67091089}
+];
+
+$('#demo-div').treemap({data: population});</code></pre>
+
+        <h4>Result:</h4>
+        <div id="demo-div"></div>
+    </div>
+
+    <div class="demo-container">
+        <h3>Custom color range and legend with custom labels</h3>
+        <h4>HTML:</h4>
+        <pre><code class="language-markup">
+&lt;ul id="demo-ul-with-legend"&gt;
+  &lt;li value="100"&gt;A&lt;/li&gt;
+  &lt;li value="100"&gt;B&lt;/li&gt;
+  &lt;li value="100"&gt;C&lt;/li&gt;
+  &lt;li value="25"&gt;D&lt;/li&gt;
+  &lt;li value="25"&gt;E&lt;/li&gt;
+  &lt;li value="25"&gt;F&lt;/li&gt;
+  &lt;li value="25"&gt;G&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+        <h4>Javascript:</h4>
+        <pre><code class="language-javascript">
+$('#demo-ul2').treemap({
+    colors: ['#93c', '#f00'],
+    legend: true,
+    legendLabels: ['Cold', 'Hot']
+});</code></pre>
+
+        <h4>Result:</h4>
+        <ul id="demo-ul-with-legend">
+            <li value="100">A</li>
+            <li value="100">B</li>
+            <li value="90">C</li>
+            <li value="80">D</li>
+            <li value="40">E</li>
+            <li value="40">F</li>
+            <li value="25">G</li>
+        </ul>
+    </div>
+
+    <h2>License</h2>
+    <p>jQuery Treemap is licensed under the <a href="LICENSE">MIT License</a>.</p>
+
+</body>
+</html>
